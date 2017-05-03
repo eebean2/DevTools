@@ -26,7 +26,7 @@ public class Sierra: UIView {
         addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(detectPan)))
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
