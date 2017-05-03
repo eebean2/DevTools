@@ -1,6 +1,5 @@
 # DevTools
 
-[![CI Status](http://img.shields.io/travis/eebean2/DevTools.svg?style=flat)](https://travis-ci.org/eebean2/DevTools)
 [![Version](https://img.shields.io/cocoapods/v/DevTools.svg?style=flat)](http://cocoapods.org/pods/DevTools)
 [![License](https://img.shields.io/cocoapods/l/DevTools.svg?style=flat)](http://cocoapods.org/pods/DevTools)
 [![Platform](https://img.shields.io/cocoapods/p/DevTools.svg?style=flat)](http://cocoapods.org/pods/DevTools)
