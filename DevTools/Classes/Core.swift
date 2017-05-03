@@ -63,8 +63,6 @@ public class Core {
             return "TV"
         case UIUserInterfaceIdiom.unspecified:
             return "Unspecifified"
-        default:
-            return "Unknown User Interface"
         }
     }
     
@@ -84,8 +82,6 @@ public class Core {
             return "Landscape"
         case UIDeviceOrientation.unknown:
             return "Unknown"
-        default:
-            return "Unknown Device Orientation"
         }
     }
     
@@ -99,8 +95,6 @@ public class Core {
             return "Unplugged"
         case UIDeviceBatteryState.unknown:
             return "Unknown"
-        default:
-            return "Unknown Battery State"
         }
     }
 
