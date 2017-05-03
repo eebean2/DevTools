@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import DevTools
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let si = Sierra()
+        si.primaryTitle.text = "Title"
+        si.primary.text = "subtitle"
+        si.addTo(view: view)
     }
 
     override func didReceiveMemoryWarning() {

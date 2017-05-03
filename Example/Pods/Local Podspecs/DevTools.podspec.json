@@ -1,8 +1,8 @@
 {
   "name": "DevTools",
-  "version": "0.1.0",
-  "summary": "A short description of DevTools.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.1.1",
+  "summary": "Developer tools to simplify iOS development",
+  "description": "A comprehensive list of tools and simplified access points for developers to access and display information in their apps for testing or public usage",
   "homepage": "https://github.com/eebean2/DevTools",
   "license": {
     "type": "MIT",
@@ -13,10 +13,10 @@
   },
   "source": {
     "git": "https://github.com/eebean2/DevTools.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "source_files": "DevTools/Classes/**/*"
 }

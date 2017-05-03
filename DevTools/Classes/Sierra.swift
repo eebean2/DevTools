@@ -19,7 +19,7 @@ public class Sierra: UIView {
     private var primaryWidth: NSLayoutConstraint!
     private var secondaryWidth: NSLayoutConstraint!
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRect(x: 20, y: 30, width: 250, height: 175)
         backgroundColor = UIColor(white: 0, alpha: 0.25)
@@ -42,10 +42,10 @@ public class Sierra: UIView {
         let y: CGFloat = 30
         let width: CGFloat = 250
         var height: CGFloat = 0
-        if primary.text != "" || primary.text != nil {
+        if primary.text != nil {
             height += primary.frame.height + 32
         }
-        if secondary.text != "" || secondary.text != nil {
+        if secondary.text != nil {
             height += secondary.frame.height + 8
         }
         return CGRect(x: x, y: y, width: width, height: height)
@@ -54,7 +54,7 @@ public class Sierra: UIView {
     private func labelOne() -> Bool {
         primaryTitle.frame = CGRect(x: 16, y: 16, width: 42, height: 21)
         primary.frame = CGRect(x: 66, y: 16, width: frame.width - (40 + primaryTitle.frame.width), height: 21)
-        if primary.text != "" || primaryTitle.text != "" {
+        if primary.text != nil || primaryTitle.text != nil {
             if primaryTitle.text == "" || primaryTitle.text == nil {
                 primaryTitle.text = "TEST 1:"
             }
@@ -85,7 +85,7 @@ public class Sierra: UIView {
     private func labelTwo() -> Bool {
         secondaryTitle.frame = CGRect(x: 16, y: 45, width: 42, height: 21)
         secondary.frame = CGRect(x: 66, y: 45, width: frame.width - (40 + secondaryTitle.frame.width), height: 21)
-        if secondary.text != "" || secondaryTitle.text != "" {
+        if secondary.text != nil || secondaryTitle.text != nil {
             if secondaryTitle.text == "" || secondaryTitle.text == nil {
                 secondaryTitle.text = "TEST 2:"
             }
@@ -120,7 +120,7 @@ public class Sierra: UIView {
     public func addTo(view: UIView) {
         let lo = labelOne()
         let lt = labelTwo()
-        if !lo || !lt {
+        if !lo && !lt {
             primaryTitle.text = "nil:"
             primary.text = "nil"
             _ = labelOne()
