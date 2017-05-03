@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Sierra: UIView {
+public class Sierra: UIView {
 
     private var last = CGPoint.zero
     public var primaryTitle = UILabel()
