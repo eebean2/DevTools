@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Internal class for error handling
 public class DevError {
     //MARK:- Console Errors
     internal let kDTNOSETUP = "You must complete setup first"

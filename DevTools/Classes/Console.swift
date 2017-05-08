@@ -130,10 +130,10 @@ public class Console: DevError {
     }
 
     private func setupBackground() {
-        var x: CGFloat = 0
-        var y: CGFloat = 0
-        var height: CGFloat = 0
-        var width: CGFloat = 0
+//        var x: CGFloat = 0
+//        var y: CGFloat = 0
+//        var height: CGFloat = 0
+//        var width: CGFloat = 0
     }
 
     private func setupConsole() {

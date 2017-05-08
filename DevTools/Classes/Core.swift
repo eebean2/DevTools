@@ -14,26 +14,43 @@ public class Core {
     
     // MARK:- Other
     
+    /// Are we on the simulator?
     public var isSimulator: Bool { return simualtor() }
+    /// App Version Number
+    public var releaseVersionNumber: String? { return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String }
+    /// App Build Number
+    public var buildVersionNumber: String? { return Bundle.main.infoDictionary?["CFBundleVersion"] as? String }
     
     // MARK:- Core Telephony
+    /// Is VoIP Enabled?
     public var voip: Bool? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.allowsVOIP }
+    /// Users Carrier
     public var carrier: String? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.carrierName }
+    /// Users Current Network Type
     public var network: String? { return networkType(code: CTTelephonyNetworkInfo().currentRadioAccessTechnology) }
+    /// Country user is in
     public var country: String? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.isoCountryCode?.localizedUppercase }
     public var mobileCode: String? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.mobileCountryCode }
     public var networkCode: String? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.mobileNetworkCode }
     
     // MARK:- UIDevice
     
+    /// Current Battery Level
     public var batteryLevel: Float { return UIDevice.current.batteryLevel }
+    /// Current Battery State
     public var batteryState: String { return battery(state: UIDevice.current.batteryState) }
+    /// Current Device Name
     public let deviceName = UIDevice.current.name
+    /// Device Model
     public let model = UIDevice.current.model
+    /// Orientation of the deivce
     public var orientation: String { return orientation(orit: UIDevice.current.orientation) }
+    /// OS Version
     public let osVersion = UIDevice.current.systemVersion
+    /// User Interface Type
     public var gui: String { return userInterface(idiom: UIDevice.current.userInterfaceIdiom) }
 
+    /// Print carrier based stats such as the carrier, voip, and network codes
     public func logTelephony() {
         print("DTCore - Telephony   - Carrier:          \(carrier ?? "No Carrier Available")")
         print("DTCore - Telephony   - VoIP:             \(voip ?? false)")
@@ -43,6 +60,7 @@ public class Core {
         print("DTCore - Telephony   - Network Type:     \(network ?? "No Network Connection Found")")
     }
     
+    /// Print standard device stats, such as battery and model information
     public func logDevice() {
         print("DTCore -             - Is Sim?:          \(isSimulator)")
         print("DTCore - Device      - Battery Level:    \(batteryLevel)")
@@ -56,8 +74,10 @@ public class Core {
     
     // MARK:- Helper Functions
     
+    /// Start a new Core object
     public init() { }
     
+    // GUI Check, returns a readable state
     private func userInterface(idiom: UIUserInterfaceIdiom) -> String {
         switch idiom {
         case UIUserInterfaceIdiom.carPlay:
@@ -73,6 +93,7 @@ public class Core {
         }
     }
     
+    // Orientation Check, returns a readable state
     private func orientation(orit: UIDeviceOrientation) -> String {
         switch orit {
         case UIDeviceOrientation.faceUp:
@@ -92,6 +113,7 @@ public class Core {
         }
     }
     
+    // Battery State Check, returns a readable state
     private func battery(state: UIDeviceBatteryState) -> String {
         switch state {
         case UIDeviceBatteryState.charging:
@@ -104,7 +126,8 @@ public class Core {
             return "Unknown"
         }
     }
-
+    
+    // Network Type Check, returns a readable state
     private func networkType(code: String?) -> String? {
         guard let code = code else { return nil }
         switch code {
@@ -135,6 +158,7 @@ public class Core {
         }
     }
     
+    // Simulator Check, returns a bool
     private func simualtor() -> Bool {
         #if (arch(i386) || arch(x86_64)) && (os(iOS) || os(watchOS) || os(tvOS))
             return true
@@ -143,19 +167,23 @@ public class Core {
         #endif
     }
     
+    /// Print a standard message
     internal static func log<message>(_ message: message) {
         print(message)
     }
     
+    /// Print a warning message
     internal static func logWarning<warning>(_ warning: warning) {
         print(":: WARNING :: \(warning)")
     }
     
+    /// Print an error message
     internal static func logError<error>(_ error: error) {
         let name = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
         print(":: \(name) CONSOLE ERROR :: \(error)")
     }
     
+    /// Print a diagnostic message
     internal static func logDiag<message>(_ diag: message) {
         print(":: DIAGNOSTIC :: \(diag)")
     }
