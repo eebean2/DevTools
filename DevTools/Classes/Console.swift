@@ -35,6 +35,8 @@ public class Console: DevError {
     public var diagColor: UIColor = .cyan
     public var textFieldColor: UIColor = .white
     public var textFieldTextColor: UIColor = .white
+    
+    public var fullscreenEnabled = true
 
     //MARK:- Init
 
@@ -128,7 +130,10 @@ public class Console: DevError {
     }
 
     private func setupBackground() {
-        
+        var x: CGFloat = 0
+        var y: CGFloat = 0
+        var height: CGFloat = 0
+        var width: CGFloat = 0
     }
 
     private func setupConsole() {
@@ -136,7 +141,9 @@ public class Console: DevError {
     }
     
     private func setupTextfield() {
-        
+        if isReadOnly {
+            return
+        }
     }
 
     //MARK:- Teardown
@@ -186,7 +193,7 @@ public class Console: DevError {
         }
     }
 
-    //MARK:- Other Functions
+    //MARK:- Public Functions
 
     public func clear() {
         if !setupComplete {

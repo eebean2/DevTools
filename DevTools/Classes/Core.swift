@@ -12,6 +12,10 @@ import CoreTelephony
 
 public class Core {
     
+    // MARK:- Other
+    
+    public var isSimulator: Bool { return simualtor() }
+    
     // MARK:- Core Telephony
     public var voip: Bool? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.allowsVOIP }
     public var carrier: String? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.carrierName }
@@ -40,6 +44,7 @@ public class Core {
     }
     
     public func logDevice() {
+        print("DTCore -             - Is Sim?:          \(isSimulator)")
         print("DTCore - Device      - Battery Level:    \(batteryLevel)")
         print("DTCore - Device      - Battery State:    \(batteryState)")
         print("DTCore - Device      - Device Name:      \(deviceName)")
@@ -50,6 +55,8 @@ public class Core {
     }
     
     // MARK:- Helper Functions
+    
+    public init() { }
     
     private func userInterface(idiom: UIUserInterfaceIdiom) -> String {
         switch idiom {
@@ -126,6 +133,14 @@ public class Core {
         default:
             return code
         }
+    }
+    
+    private func simualtor() -> Bool {
+        #if (arch(i386) || arch(x86_64)) && (os(iOS) || os(watchOS) || os(tvOS))
+            return true
+        #else
+            return false
+        #endif
     }
     
     internal static func log<message>(_ message: message) {

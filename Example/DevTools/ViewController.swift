@@ -19,6 +19,9 @@ class ViewController: UIViewController {
         si.primaryTitle.text = "Title"
         si.primary.text = "subtitle"
         si.addTo(view: view)
+        
+        Core().logTelephony()
+        Core().logDevice()
     }
 
     override func didReceiveMemoryWarning() {
