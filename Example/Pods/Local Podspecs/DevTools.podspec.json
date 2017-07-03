@@ -1,6 +1,6 @@
 {
   "name": "DevTools",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "summary": "Developer tools to simplify iOS development",
   "description": "A comprehensive list of tools and simplified access points for developers to access and display information in their apps for testing or public usage",
   "homepage": "https://github.com/eebean2/DevTools",
@@ -13,10 +13,10 @@
   },
   "source": {
     "git": "https://github.com/eebean2/DevTools.git",
-    "tag": "0.1.1"
+    "tag": "0.1.3"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "8.0"
   },
   "source_files": "DevTools/Classes/**/*"
 }

@@ -8,6 +8,9 @@
 
 import UIKit
 
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
+@available(OSX, unavailable)
 public class Sierra: UIView {
 
     private var last = CGPoint.zero
@@ -24,17 +27,25 @@ public class Sierra: UIView {
         self.frame = CGRect(x: 20, y: 30, width: 250, height: 175)
         backgroundColor = UIColor(white: 0, alpha: 0.25)
         addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(detectPan)))
+        addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(zoomShrink)))
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func detectPan(_ sender: UIPanGestureRecognizer) {
+    @objc(detectPanWithSender:)
+    private func detectPan(_ sender: UIPanGestureRecognizer) {
         if !disableDragging {
             let i = sender.translation(in: superview)
             center = CGPoint(x: last.x + i.x, y: last.y + i.y)
         }
+    }
+    
+    @objc(zoomShrinkWithSender:)
+    private func zoomShrink(_ sender: UIPinchGestureRecognizer) {
+        print("Scale: \(sender.scale)")
+        print("Velosity: \(sender.velocity)")
     }
     
     private func getRect() -> CGRect {
@@ -117,7 +128,8 @@ public class Sierra: UIView {
         }
     }
     
-    public func addTo(view: UIView) {
+    @objc(addToView:)
+    public func addTo(_ view: UIView) {
         let lo = labelOne()
         let lt = labelTwo()
         if !lo && !lt {
@@ -127,10 +139,26 @@ public class Sierra: UIView {
         }
         frame = getRect()
         view.addSubview(self)
+        view.bringSubview(toFront: self)
     }
     
+    @objc(addToController:)
+    public func addTo(_ controller: UIViewController) {
+        addTo(controller.view)
+    }
+    
+    @available(*, renamed: "addTo(_:)")
+    @objc(oldAddToView:)
+    public func addTo(view: UIView) {
+        Core.logError("\(#function) has changed! Please use the new version for better future adaption")
+        addTo(view)
+    }
+    
+    @available(*, renamed: "addTo(_:)")
+    @objc(oldAddToController:)
     public func addTo(controller: UIViewController) {
-        addTo(view: controller.view)
+        Core.logError("\(#function) has changed! Please use the new version for better future adaption")
+        addTo(controller.view)
     }
     
     public func remove() {

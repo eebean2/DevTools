@@ -15,13 +15,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        Core().logTelephony()
+        Core().logDevice()
+        
+//      Console is not finished, please do not use
+//
+//        _ = Console(on: self, readOnly: true) { (console) in
+//            console.printDiagnostic()
+//        }
+        
         let si = Sierra()
         si.primaryTitle.text = "Title"
         si.primary.text = "subtitle"
-        si.addTo(view: view)
-        
-        Core().logTelephony()
-        Core().logDevice()
+        si.addTo(self)
     }
 
     override func didReceiveMemoryWarning() {

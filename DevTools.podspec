@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DevTools'
-  s.version          = '0.1.2'
+  s.version          = '1.0'
   s.summary          = 'Developer tools to simplify iOS development'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.author           = { 'eebean2' => 'eebean2@me.com' }
   s.source           = { :git => 'https://github.com/eebean2/DevTools.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = 'DevTools/Classes/**/*'
   

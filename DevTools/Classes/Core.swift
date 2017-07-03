@@ -17,38 +17,129 @@ public class Core {
     /// Are we on the simulator?
     public var isSimulator: Bool { return simualtor() }
     /// App Version Number
+    @available(OSX 10.0, iOS 2.0, tvOS 9.0, watchOS 2.0, *)
     public var releaseVersionNumber: String? { return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String }
     /// App Build Number
+    @available(OSX 10.0, iOS 2.0, tvOS 9.0, watchOS 2.0, *)
     public var buildVersionNumber: String? { return Bundle.main.infoDictionary?["CFBundleVersion"] as? String }
+    /// Is the Status Bar Hidden?
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
+    public var isStatusBarHidden: Bool { return UIApplication.shared.isStatusBarHidden }
+    /// Status Bar Height
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
+    public var statusBarHeight: CGFloat { return UIApplication.shared.statusBarFrame.height }
     
     // MARK:- Core Telephony
     /// Is VoIP Enabled?
-    public var voip: Bool? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.allowsVOIP }
+    /// -note: Will always return false on Simulator
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
+    public var voip: Bool? {
+        if isSimulator {
+            return false
+        } else {
+            return CTTelephonyNetworkInfo().subscriberCellularProvider?.allowsVOIP
+        }
+    }
     /// Users Carrier
-    public var carrier: String? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.carrierName }
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
+    public var carrier: String? {
+        if isSimulator {
+            return "Simulator :: No Cellular Network"
+        } else {
+            return CTTelephonyNetworkInfo().subscriberCellularProvider?.carrierName
+        }
+    }
     /// Users Current Network Type
-    public var network: String? { return networkType(code: CTTelephonyNetworkInfo().currentRadioAccessTechnology) }
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
+    public var network: String? {
+        if isSimulator {
+            return "Simulator :: No Cellular Network"
+        } else {
+            return networkType(code: CTTelephonyNetworkInfo().currentRadioAccessTechnology)
+        }
+    }
     /// Country user is in
-    public var country: String? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.isoCountryCode?.localizedUppercase }
-    public var mobileCode: String? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.mobileCountryCode }
-    public var networkCode: String? { return CTTelephonyNetworkInfo().subscriberCellularProvider?.mobileNetworkCode }
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
+    public var country: String? {
+        if isSimulator {
+            return "Simulator :: No Cellular Network"
+        } else {
+            if #available(iOS 9.0, *) {
+                return CTTelephonyNetworkInfo().subscriberCellularProvider?.isoCountryCode?.localizedUppercase
+            } else {
+                return CTTelephonyNetworkInfo().subscriberCellularProvider?.isoCountryCode?.uppercased()
+            }
+        }
+    }
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
+    public var mobileCode: String? {
+        if isSimulator {
+            return "Simulator :: No Cellular Network"
+        } else {
+            return CTTelephonyNetworkInfo().subscriberCellularProvider?.mobileCountryCode
+        }
+    }
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
+    public var networkCode: String? {
+        if isSimulator {
+            return "Simulator :: No Cellular Network"
+        } else {
+            return CTTelephonyNetworkInfo().subscriberCellularProvider?.mobileNetworkCode
+        }
+    }
     
     // MARK:- UIDevice
     
     /// Current Battery Level
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
     public var batteryLevel: Float { return UIDevice.current.batteryLevel }
     /// Current Battery State
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
     public var batteryState: String { return battery(state: UIDevice.current.batteryState) }
     /// Current Device Name
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
     public let deviceName = UIDevice.current.name
     /// Device Model
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
     public let model = UIDevice.current.model
     /// Orientation of the deivce
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
+    @available(tvOS, unavailable)
     public var orientation: String { return orientation(orit: UIDevice.current.orientation) }
     /// OS Version
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
     public let osVersion = UIDevice.current.systemVersion
     /// User Interface Type
+    @available(OSX, unavailable)
+    @available(watchOS, unavailable)
     public var gui: String { return userInterface(idiom: UIDevice.current.userInterfaceIdiom) }
+    
+    // MARK:- Log Functions
 
     /// Print carrier based stats such as the carrier, voip, and network codes
     public func logTelephony() {
@@ -62,7 +153,7 @@ public class Core {
     
     /// Print standard device stats, such as battery and model information
     public func logDevice() {
-        print("DTCore -             - Is Sim?:          \(isSimulator)")
+        print("DTCore - Device      - Is Sim?:          \(isSimulator)")
         print("DTCore - Device      - Battery Level:    \(batteryLevel)")
         print("DTCore - Device      - Battery State:    \(batteryState)")
         print("DTCore - Device      - Device Name:      \(deviceName)")
@@ -168,23 +259,30 @@ public class Core {
     }
     
     /// Print a standard message
-    internal static func log<message>(_ message: message) {
+    public static func log<message>(_ message: message) {
         print(message)
     }
     
     /// Print a warning message
-    internal static func logWarning<warning>(_ warning: warning) {
+    public static func logWarning<warning>(_ warning: warning) {
         print(":: WARNING :: \(warning)")
     }
     
     /// Print an error message
-    internal static func logError<error>(_ error: error) {
+    @available(OSX 10.0, iOS 2.0, tvOS 9.0, watchOS 2.0, *)
+    public static func logError<error>(_ error: error) {
+        let name = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
+        print(":: \(name) ERROR :: \(error)")
+    }
+    
+    @available(OSX 10.0, iOS 2.0, tvOS 9.0, watchOS 2.0, *)
+    internal static func logConsoleError<error>(_ error: error) {
         let name = Bundle.main.infoDictionary![kCFBundleNameKey as String]!
         print(":: \(name) CONSOLE ERROR :: \(error)")
     }
     
     /// Print a diagnostic message
-    internal static func logDiag<message>(_ diag: message) {
+    public static func logDiag<message>(_ diag: message) {
         print(":: DIAGNOSTIC :: \(diag)")
     }
 }
