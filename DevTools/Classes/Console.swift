@@ -201,14 +201,22 @@ internal class Console: DevError {
         switch method {
         case .both:
             let i = NSMutableAttributedString(attributedString: console.attributedText)
-            i.append(NSAttributedString(string: "\(message)\n", attributes: [NSForegroundColorAttributeName: textColor]))
+            #if swift(>=4.0)
+                i.append(NSAttributedString(string: "\(message)\n", attributes: [NSAttributedStringKey.foregroundColor: diagColor]))
+            #else
+                i.append(NSAttributedString(string: "\(message)\n", attributes: [NSForegroundColorAttributeName: diagColor]))
+            #endif
             console.attributedText = i
             Core.log(message)
         case .xcodeOnly:
             Core.log(message)
         case .default:
             let i = NSMutableAttributedString(attributedString: console.attributedText)
-            i.append(NSAttributedString(string: "\(message)\n", attributes: [NSForegroundColorAttributeName: textColor]))
+            #if swift(>=4.0)
+                i.append(NSAttributedString(string: "\(message)\n", attributes: [NSAttributedStringKey.foregroundColor: diagColor]))
+            #else
+                i.append(NSAttributedString(string: "\(message)\n", attributes: [NSForegroundColorAttributeName: diagColor]))
+            #endif
             console.attributedText = i
         }
     }
@@ -221,14 +229,22 @@ internal class Console: DevError {
         switch method {
         case .both:
             let i = NSMutableAttributedString(attributedString: console.attributedText)
-            i.append(NSAttributedString(string: ":: DIAGNOSTIC :: \(diagnostic)\n)", attributes: [NSForegroundColorAttributeName: diagColor]))
+            #if swift(>=4.0)
+                i.append(NSAttributedString(string: ":: DIAGNOSTIC :: \(diagnostic)\n)", attributes: [NSAttributedStringKey.foregroundColor: diagColor]))
+            #else
+                i.append(NSAttributedString(string: ":: DIAGNOSTIC :: \(diagnostic)\n)", attributes: [NSForegroundColorAttributeName: diagColor]))
+            #endif
             console.attributedText = i
             Core.logDiag(diagnostic)
         case .xcodeOnly:
             Core.logDiag(diagnostic)
         case .default:
             let i = NSMutableAttributedString(attributedString: console.attributedText)
-            i.append(NSAttributedString(string: ":: DIAGNOSTIC :: \(diagnostic)\n", attributes: [NSForegroundColorAttributeName: diagColor]))
+            #if swift(>=4.0)
+                i.append(NSAttributedString(string: ":: DIAGNOSTIC :: \(diagnostic)\n)", attributes: [NSAttributedStringKey.foregroundColor: diagColor]))
+            #else
+                i.append(NSAttributedString(string: ":: DIAGNOSTIC :: \(diagnostic)\n)", attributes: [NSForegroundColorAttributeName: diagColor]))
+            #endif
             console.attributedText = i
         }
     }
@@ -241,14 +257,22 @@ internal class Console: DevError {
         switch method {
         case .both:
             let i = NSMutableAttributedString(attributedString: console.attributedText)
-            i.append(NSAttributedString(string: ":: WARNING :: \(warning)\n)", attributes: [NSForegroundColorAttributeName: warningColor]))
+            #if swift(>=4.0)
+                i.append(NSAttributedString(string: ":: WARNING :: \(warning)\n)", attributes: [NSAttributedStringKey.foregroundColor: warningColor]))
+            #else
+                i.append(NSAttributedString(string: ":: WARNING :: \(warning)\n)", attributes: [NSForegroundColorAttributeName: warningColor]))
+            #endif
             console.attributedText = i
             Core.logWarning(warning)
         case .xcodeOnly:
             Core.logWarning(warning)
         case .default:
             let i = NSMutableAttributedString(attributedString: console.attributedText)
-            i.append(NSAttributedString(string: ":: WARNING :: \(warning)\n", attributes: [NSForegroundColorAttributeName: warningColor]))
+            #if swift(>=4.0)
+                i.append(NSAttributedString(string: ":: WARNING :: \(warning)\n)", attributes: [NSAttributedStringKey.foregroundColor: warningColor]))
+            #else
+                i.append(NSAttributedString(string: ":: WARNING :: \(warning)\n)", attributes: [NSForegroundColorAttributeName: warningColor]))
+            #endif
             console.attributedText = i
         }
     }
