@@ -141,7 +141,11 @@ internal class Console: DevError {
             console = UITextView(frame: frame)
             console.backgroundColor = .clear
             console.isEditable = false
-            console.attributedText = NSAttributedString(string: "Welcome to Console\n", attributes: [NSForegroundColorAttributeName: textColor])
+            #if swift(>=4.0)
+                console.attributedText = NSAttributedString(string: "Welcome to Console\n", attributes: [NSAttributedStringKey.forgroundColor: textColor])
+            #else
+                console.attributedText = NSAttributedString(string: "Welcome to Console\n", attributes: [NSForegroundColorAttributeName: textColor])
+            #endif
             background.addSubview(console)
             
             completion()
