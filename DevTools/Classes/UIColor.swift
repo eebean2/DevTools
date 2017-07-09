@@ -10,7 +10,7 @@ import Foundation
 extension UIColor {
     
     /// Create a color from Hex
-    class func rgb(fromHex: Int) -> UIColor {
+    public class func rgb(fromHex: Int) -> UIColor {
         // Function found here
         // https://stackoverflow.com/questions/33942483/swift-extension-example
         

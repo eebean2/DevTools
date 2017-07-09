@@ -11,12 +11,12 @@ import Foundation
 extension UIImage {
     
     /// Create PNG Data from the current image
-    func pngRepresentation() -> Data? {
+    public func pngRepresentation() -> Data? {
         return UIImagePNGRepresentation(self)
     }
     
     /// Create JPEG Data from the current image
-    func jpegRepresentation(_ compressionQuality: CGFloat) -> Data? {
+    public func jpegRepresentation(_ compressionQuality: CGFloat) -> Data? {
         return UIImageJPEGRepresentation(self, compressionQuality)
     }
 }

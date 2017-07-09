@@ -8,11 +8,11 @@
 import Foundation
 
 /// A line of characters to verify a possible email string
-typealias EmailRegex = String
+public typealias EmailRegex = String
 
 extension String {
     /// Checks if the string is a possible email
-    var isEmail: Bool {
+    public var isEmail: Bool {
         // EmailRegex found here
         // http://emailregex.com
         
@@ -21,17 +21,17 @@ extension String {
     }
     
     /// Checks if the string is a possible email using a set predicate
-    func isEmail(with predicate: NSPredicate) -> Bool {
+    public func isEmail(with predicate: NSPredicate) -> Bool {
         return predicate.evaluate(with: self)
     }
     
     /// Checks if the string is a possible email using a set Email Regex
-    func isEmail(with regex: EmailRegex) -> Bool {
+    public func isEmail(with regex: EmailRegex) -> Bool {
         return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: self)
     }
     
     /// Turns the string into a plural
-    func pluralize(_ needsApostrophe: Bool = false, isName: Bool = false) -> String {
+    public func pluralize(_ needsApostrophe: Bool = false, isName: Bool = false) -> String {
         // Expanded idea of the function found here
         // https://gist.github.com/albertbori/0faf7de867d96eb83591
         
@@ -78,14 +78,14 @@ extension String {
     }
     
     /// Replace a given string with another string
-    func replace(target: String, withString: String) -> String {
+    public func replace(target: String, withString: String) -> String {
         // Function found here
         // https://stackoverflow.com/questions/33942483/swift-extension-example
         return self.replacingOccurrences(of: target, with: withString)
     }
     
     /// Remove all empty spaces
-    func removeWhitespace() -> String {
+    public func removeWhitespace() -> String {
         return self.replacingOccurrences(of: " ", with: "")
     }
 }
