@@ -142,7 +142,7 @@ internal class Console: DevError {
             console.backgroundColor = .clear
             console.isEditable = false
             #if swift(>=4.0)
-                console.attributedText = NSAttributedString(string: "Welcome to Console\n", attributes: [NSAttributedStringKey.forgroundColor: textColor])
+                console.attributedText = NSAttributedString(string: "Welcome to Console\n", attributes: [NSAttributedStringKey.foregroundColor: textColor])
             #else
                 console.attributedText = NSAttributedString(string: "Welcome to Console\n", attributes: [NSForegroundColorAttributeName: textColor])
             #endif
