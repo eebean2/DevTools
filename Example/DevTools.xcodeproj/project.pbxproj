@@ -13,6 +13,10 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		73BD92371F16AE0300515CA4 /* DocumetationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BD92361F16AE0300515CA4 /* DocumetationTableView.swift */; };
+		73BD92391F16AE1800515CA4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BD92381F16AE1800515CA4 /* DetailViewController.swift */; };
+		73BD923B1F16AE7F00515CA4 /* Doc+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BD923A1F16AE7F00515CA4 /* Doc+Helper.swift */; };
+		73E4924A1F145926003300D9 /* v1_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 73E492491F145926003300D9 /* v1_2.json */; };
 		A8637ECA70649468777F0EB7 /* Pods_DevTools_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A230D99314108A99EA71A2A /* Pods_DevTools_Example.framework */; };
 		DC58F94BFD2D886E6512BE9C /* Pods_DevTools_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA462C6157944E9DA36182BC /* Pods_DevTools_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -42,6 +46,10 @@
 		607FACE51AFB9204008FA782 /* DevTools_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevTools_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		73BD92361F16AE0300515CA4 /* DocumetationTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumetationTableView.swift; sourceTree = "<group>"; };
+		73BD92381F16AE1800515CA4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		73BD923A1F16AE7F00515CA4 /* Doc+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Doc+Helper.swift"; sourceTree = "<group>"; };
+		73E492491F145926003300D9 /* v1_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = v1_2.json; sourceTree = "<group>"; };
 		95927FA5941B79EF1C0C5942 /* DevTools.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DevTools.podspec; path = ../DevTools.podspec; sourceTree = "<group>"; };
 		A7AA88C94BE109E8E48BEBD0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		AD1A352475B3A4915DF2459D /* Pods-DevTools_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevTools_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-DevTools_Example/Pods-DevTools_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,9 +103,8 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				73BD92361F16AE0300515CA4 /* DocumetationTableView.swift */,
+				73BD92381F16AE1800515CA4 /* DetailViewController.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for DevTools";
@@ -107,7 +114,12 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				73BD923A1F16AE7F00515CA4 /* Doc+Helper.swift */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
+				73E492491F145926003300D9 /* v1_2.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -251,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				73E4924A1F145926003300D9 /* v1_2.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -373,7 +386,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				73BD92371F16AE0300515CA4 /* DocumetationTableView.swift in Sources */,
+				73BD923B1F16AE7F00515CA4 /* Doc+Helper.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				73BD92391F16AE1800515CA4 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

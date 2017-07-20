@@ -1,5 +1,5 @@
 PODS:
-  - DevTools (1.1.1)
+  - DevTools (1.1.2)
 
 DEPENDENCIES:
   - DevTools (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DevTools: a0e1e105ff933fd6848c8fe2d539c27e8e07fc8e
+  DevTools: 48d8364af7d59cb29c6eb8489ce67b37d8de0968
 
 PODFILE CHECKSUM: 03e4fd8f3815f1f36fcfa1d0a6170d5211a5c2bf
 

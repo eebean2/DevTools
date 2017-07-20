@@ -16,7 +16,7 @@ import SceneKit
 internal typealias ConsoleCompletion = (Console) -> Void // Public in future versions
 private typealias BasicCompletion = () -> Void
 
-internal class Console: DevError {
+internal class Console {
 
     //MARK:- Basic Variables
 
@@ -47,7 +47,6 @@ internal class Console: DevError {
     required public init(_ view: UIView, readOnly: Bool = false, completion: @escaping ConsoleCompletion) {
         self.isReadOnly = readOnly
         self.superview = view
-        super.init()
         self.setup() {
             Core.logDiag("Console is not finished, please do not use")
             completion(self)
@@ -101,7 +100,6 @@ internal class Console: DevError {
         self.isReadOnly = readOnly
         self.superview = view
         self.isFullscreen = true
-        super.init()
         self.setup() {
             Core.logDiag("Required Init Fisned")
             completion(self)
@@ -174,7 +172,7 @@ internal class Console: DevError {
 
     public func removeFromSuperview() {
         if !setupComplete {
-            Core.logError(kDTNOSETUP)
+            Core.logError("You must complete setup first")
             return
         }
         background.removeFromSuperview()
@@ -182,7 +180,7 @@ internal class Console: DevError {
 
     public func removeAndReset() {
         if !setupComplete {
-            Core.logError(kDTNOSETUP)
+            Core.logError("You must complete setup first")
             return
         }
         background.removeFromSuperview()
@@ -199,7 +197,7 @@ internal class Console: DevError {
 
     public func print<Message>(_ message: Message, method: PrintMethod = .both) {
         if !setupComplete {
-            Core.logConsoleError(kDTNOSETUP)
+            Core.logConsoleError("You must complete setup first")
             return
         }
         switch method {
@@ -227,7 +225,7 @@ internal class Console: DevError {
     
     public func printDiag<Message>(_ diagnostic: Message, method: PrintMethod = .both) {
         if !setupComplete {
-            Core.logConsoleError(kDTNOSETUP)
+            Core.logConsoleError("You must complete setup first")
             return
         }
         switch method {
@@ -255,7 +253,7 @@ internal class Console: DevError {
     
     public func printWarning<Message>(_ warning: Message, method: PrintMethod = .both) {
         if !setupComplete {
-            Core.logConsoleError(kDTNOSETUP)
+            Core.logConsoleError("You must complete setup first")
             return
         }
         switch method {
@@ -285,7 +283,7 @@ internal class Console: DevError {
 
     public func clear() {
         if !setupComplete {
-            Core.logError(kDTNOSETUP)
+            Core.logError("You must complete setup first")
             return
         }
         // Clear Console

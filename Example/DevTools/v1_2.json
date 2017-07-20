@@ -1,0 +1,326 @@
+{
+    "Core" : {
+        "api" : [
+            {
+                "title" : "public var isSimulator",
+                "return" : "Bool",
+                "message" : "Check if we are on the simulator"
+            },
+            {
+                "title" : "public var releaseVersionNumber",
+                "return" : "String?",
+                "message" : "App Version Number",
+                "restrictions" : "OSX 10.0, iOS 2.0, tvOS 9.0, watchOS 2.0"
+            },
+            {
+                "title" : "public var buildVersionNumber",
+                "return" : "String?",
+                "message" : "App Build Number",
+                "restrictions" : "OSX 10.0, iOS 2.0, tvOS 9.0, watchOS 2.0"
+            },
+            {
+                "title" : "public var isStatusBarHidden",
+                "return" : "Bool?",
+                "message" : "Checks if the status bar is hidden",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var statusBarHeight",
+                "return" : "CGFloat",
+                "message" : "Status Bar Height",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var voip",
+                "return" : "String?",
+                "message" : "Check if VIOP is enabled on the device",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var country",
+                "return" : "String?",
+                "message" : "The current country code",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var networkCode",
+                "return" : "String?",
+                "message" : "The current network code",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var mobileCode",
+                "return" : "String?",
+                "message" : "The current mobile code",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var carrier",
+                "return" : "String?",
+                "message" : "The current Carrier",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var network",
+                "return" : "String?",
+                "message" : "App Version Number",
+                "restrictions" : "OSX 10.0, iOS 2.0, tvOS 9.0, watchOS 2.0"
+            },
+            {
+                "title" : "public var batteryLevel",
+                "return" : "Float",
+                "message" : "Current Battery Level",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var batteryState",
+                "return" : "String",
+                "message" : "Current Battery State",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var deviceName",
+                "return" : "String",
+                "message" : "Device Name",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var model",
+                "return" : "String",
+                "message" : "Current Battery Level",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var orientation",
+                "return" : "String",
+                "message" : "Device Orientation",
+                "restrictions" : "iOS ONLY"
+            },
+            {
+                "title" : "public var osVersion",
+                "return" : "String",
+                "message" : "Current OS Version",
+                "restrictions" : "iOS and tvOS ONLY"
+            },
+            {
+                "title" : "public var gui",
+                "return" : "String",
+                "message" : "User Interface",
+                "restrictions" : "iOS ONLY and tvOS ONLY"
+            },
+            {
+                "title" : "public func logTelephony()",
+                "return" : "void",
+                "message" : "Prints to the console information about the phones cellular capabilities, if on simulator, it prints sim-errors"
+            },
+            {
+                "title" : "public func logDevice()",
+                "return" : "void",
+                "message" : "Prints device specific information, such as battery level and os version"
+            },
+            {
+                "title" : "public init()",
+                "return" : "void",
+                "message" : "Class initilizer"
+            },
+            {
+                "title" : "public static func log<message>(_ message: message)",
+                "return" : "void",
+                "message" : "Logs a message"
+            },
+            {
+                "title" : "public static func logWarning<warning>(_ warning: warning)",
+                "return" : "void",
+                "message" : "Logs a warning in the style: \":: WARNING :: [warning]\""
+            },
+            {
+                "title" : "public static func logError<error>(_ error: error)",
+                "return" : "void",
+                "message" : "Logs an error in the style of :\":: [app name] ERROR :: [error]\"",
+                "restrictions" : "OSX 10.0, iOS 2.0, tvOS 9.0, watchOS 2.0"
+            },
+            {
+                "title" : "public static func logDiag<message>(_ message: message)",
+                "return" : "void",
+                "message" : "Logs a diagnostic message in the style: \":: DIAGNOSTIC :: [message]\""
+            },
+            {
+                "title" : "public static func isAvailable()",
+                "return" : "Bool",
+                "message" : "A check to see if your running on a system capable of running most of DevTools functions, if you fail, you can still run many functions, but you will have to manually check. Not all funcations are marked yet or safe on all systems"
+            }
+        ]
+    },
+    "Console" : {
+        "warning" : "Console is not currenty avalible, functions listed may not work or are incomplete!",
+        "api" : [
+            
+        ]
+    },
+    "Sierra" : {
+        "warning" : "Sierra mirrors current Toast, and will be edited in the future to be more custimizable.",
+        "api" : [
+            {
+                "title" : "public var primatyTitle",
+                "return" : "UILabel",
+                "message" : "The primary label"
+            },
+            {
+                "title" : "public var primary",
+                "return" : "UILabel",
+                "message" : "The primary message you can change"
+            },
+            {
+                "title" : "public var secondaryTitle",
+                "return" : "UILabel",
+                "message" : "The secondary label"
+            },
+            {
+                "title" : "public var secondary",
+                "return" : "UILabel",
+                "message" : "The secondary message you can change"
+            },
+            {
+                "title" : "public var disableDragging",
+                "return" : "Bool",
+                "message" : "Set this to true to stop Sierra from moving"
+            },
+            {
+                "title" : "public func addTo(_ view: UIView)",
+                "return" : "void",
+                "message" : "Add to the selected view, recommended the top most view to prevent accidently hidding"
+            },
+            {
+                "title" : "public func addTo(_ controller: UIViewController)",
+                "return" : "void",
+                "message" : "Add to the selected controller"
+            },
+            {
+                "title" : "public func remove()",
+                "return" : "void",
+                "message" : "Remove Sierra from its superview"
+            },
+            {
+                "title" : "public func resetLocation()",
+                "return" : "void",
+                "message" : "Reset Sierra back to its home"
+            },
+            {
+                "title" : "public func updatePrimary(_ message: String)",
+                "return" : "void",
+                "message" : "Update the primary message"
+            },
+            {
+                "title" : "public func updateSecondary(_ message: String)",
+                "return" : "void",
+                "message" : "Update the secondary message"
+            }
+        ]
+    },
+    "Extensions" : {
+        "api" : {
+            "Date" : [
+                {
+                    "title" : "public func toString()",
+                    "return" : "Sring",
+                    "message" : "Convert the current date to a string with format \"MMMM dd yyyy\""
+                },
+                {
+                    "title" : "public func toString(with format: String)",
+                    "return" : "String",
+                    "message" : "Convert the date to a string with the given"
+                },
+                {
+                    "title" : "public static func from(_ string: String, format: String)",
+                    "return" : "Date?",
+                    "message" : "Attempts to create a date from a string with the given format"
+                },
+                {
+                    "title" : "public static func from(_ string: String)",
+                    "return" : "Date?",
+                    "message" : "Attempts to create a date from a string with the format \"MMMM dd yyyy\""
+                }
+            ],
+            "String" : [
+                {
+                    "title" : "typealias EmailRegex",
+                    "return" : "String",
+                    "message" : "A string to check if a secondary string is an email. E.g. \"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}\""
+                },
+                {
+                    "title" : "public var isEmail",
+                    "return" : "Bool",
+                    "message" : "Check if a string is an email"
+                },
+                {
+                    "title" : "public func isEmail(with predicate: NSPredicate)",
+                    "return" : "Bool",
+                    "message" : "Check if a string is an email with the given predicate"
+                },
+                {
+                    "title" : "public func isEmail(with regex: EmailRegex)",
+                    "return" : "Bool",
+                    "message" : "Check if a string is an email with the given email regex"
+                },
+                {
+                    "title" : "public func pluralize(_ needsApostrophe: Bool = false, isName: Bool = false)",
+                    "return" : "String",
+                    "message" : "Adds a 's, s', s, or ies after a string"
+                },
+                {
+                    "title" : "public func replace(target: String, with: String",
+                    "return" : "String",
+                    "message" : "Replace a given string with another string"
+                },
+                {
+                    "title" : "public func removeWhitespace()",
+                    "return" : "String",
+                    "message" : "Remove all \" \""
+                },
+                {
+                    "title" : "public func toDate(format: String)",
+                    "return" : "Date?",
+                    "message" : "Attempt to create a date with the given format"
+                },
+                {
+                    "title" : "public func toDate()",
+                    "return" : "Date?",
+                    "message" : "Attempt to create a date with the format \"MMMM dd yyyy\""
+                }
+            ],
+            "UIAlertController" : [
+                {
+                    "title" : "public func addActions(_ actions: [UIAlertActions])",
+                    "return" : "void",
+                    "message" : "Add an array of actions to the alert controller"
+                }
+            ],
+            "UIColor" : [
+                {
+                    "title" : "public class func rgb(fromHex: Int)",
+                    "return" : "UIColor",
+                    "message" : "Create a UIColor from Hex"
+                }
+            ],
+            "UIImage" : [
+                {
+                    "title" : "public func pngRepresentation()",
+                    "return" : "Data?",
+                    "message" : "Convert the image to PNG data"
+                },
+                {
+                    "title" : "public func jpegRepresentation(_ compressionQuality: CGFloat)",
+                    "return" : "Data?",
+                    "message" : "Convert the image to JPEG data with the given compression quality"
+                }
+            ],
+            "UIView" : [
+                {
+                    "title" : "public func addToBack(_ view: UIView)",
+                    "return" : "void",
+                    "message" : "Add a view and send it to the back"
+                }
+            ]
+        }
+    }
+}

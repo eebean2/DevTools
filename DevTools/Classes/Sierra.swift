@@ -8,20 +8,30 @@
 
 import UIKit
 
+/// A version of Toast, coming soon with more custimizations!
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 @available(OSX, unavailable)
 public class Sierra: UIView {
-
+    
+    /// If you see this... your snooping... and changing this would make bad things happen...
     private var last = CGPoint.zero
+    /// The title of the primary label
     public var primaryTitle = UILabel()
+    /// The changeable text of the primary label
     public var primary = UILabel()
+    /// The title of the secondary label
     public var secondaryTitle = UILabel()
+    /// The changeable text of the secondary label
     public var secondary = UILabel()
+    /// Enable to restrict Sierra to one place
     public var disableDragging = false
+    /// If you see this... your snooping... and changing this would make bad things happen...
     private var primaryWidth: NSLayoutConstraint!
+    /// If you see this... your snooping... and changing this would make bad things happen...
     private var secondaryWidth: NSLayoutConstraint!
 
+    /// Please do not override me... master has alrady overridden me... if you wish to custimize me, please submit custimization request via issues on github!
     override public init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = CGRect(x: 20, y: 30, width: 250, height: 175)
@@ -30,10 +40,12 @@ public class Sierra: UIView {
         addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(zoomShrink)))
     }
     
+    /// Yep... always required...
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// If you see this... your snooping...
     @objc(detectPanWithSender:)
     private func detectPan(_ sender: UIPanGestureRecognizer) {
         if !disableDragging {
@@ -42,12 +54,14 @@ public class Sierra: UIView {
         }
     }
     
+    /// If you see this... your snooping...
     @objc(zoomShrinkWithSender:)
     private func zoomShrink(_ sender: UIPinchGestureRecognizer) {
         print("Scale: \(sender.scale)")
         print("Velosity: \(sender.velocity)")
     }
     
+    /// If you see this... your snooping...
     private func getRect() -> CGRect {
         let x: CGFloat = 20
         let y: CGFloat = 30
@@ -62,6 +76,7 @@ public class Sierra: UIView {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
+    /// If you see this... your snooping...
     private func labelOne() -> Bool {
         primaryTitle.frame = CGRect(x: 16, y: 16, width: 42, height: 21)
         primary.frame = CGRect(x: 66, y: 16, width: frame.width - (40 + primaryTitle.frame.width), height: 21)
@@ -93,6 +108,7 @@ public class Sierra: UIView {
         }
     }
     
+    /// If you see this... your snooping...
     private func labelTwo() -> Bool {
         secondaryTitle.frame = CGRect(x: 16, y: 45, width: 42, height: 21)
         secondary.frame = CGRect(x: 66, y: 45, width: frame.width - (40 + secondaryTitle.frame.width), height: 21)
@@ -121,6 +137,7 @@ public class Sierra: UIView {
         }
     }
     
+    /// Please do not override me... master has alrady overridden me... if you wish to custimize me, please submit custimization request via issues on github!
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !disableDragging {
             superview?.bringSubview(toFront: self)
@@ -128,6 +145,7 @@ public class Sierra: UIView {
         }
     }
     
+    /// Add to your chosen view, recommended your top most view to not accidently hide Sierra
     @objc(addToView:)
     public func addTo(_ view: UIView) {
         let lo = labelOne()
@@ -142,11 +160,13 @@ public class Sierra: UIView {
         view.bringSubview(toFront: self)
     }
     
+    /// Add to your chosen controller, recommended your top most controller to not accidently hide Sierra
     @objc(addToController:)
     public func addTo(_ controller: UIViewController) {
         addTo(controller.view)
     }
     
+    /// I've been renamed since Xcode learned to be nice with @objc now! Please use the new and improved me!
     @available(*, renamed: "addTo(_:)")
     @objc(oldAddToView:)
     public func addTo(view: UIView) {
@@ -154,6 +174,7 @@ public class Sierra: UIView {
         addTo(view)
     }
     
+    /// I've been renamed since Xcode learned to be nice with @objc now! Please use the new and improved me!
     @available(*, renamed: "addTo(_:)")
     @objc(oldAddToController:)
     public func addTo(controller: UIViewController) {
@@ -161,16 +182,19 @@ public class Sierra: UIView {
         addTo(controller.view)
     }
     
+    /// Remove Sierra from the superview
     public func remove() {
         removeFromSuperview()
     }
     
+    /// Reset me to my original location
     public func resetLocation() {
         UIView.animate(withDuration: 0.5) {
             self.frame = self.getRect()
         }
     }
     
+    /// Update Primary message label
     public func updatePrimary(_ message: String) {
         primary.text = message
         UIView.animate(withDuration: 0.5, animations: {
@@ -182,6 +206,7 @@ public class Sierra: UIView {
         })
     }
     
+    /// Update Secondary message label
     public func updateSecondary(_ message: String) {
         secondary.text = message
         UIView.animate(withDuration: 0.5) {

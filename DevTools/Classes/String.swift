@@ -78,14 +78,36 @@ extension String {
     }
     
     /// Replace a given string with another string
-    public func replace(target: String, withString: String) -> String {
+    public func replace(target: String, with: String) -> String {
         // Function found here
         // https://stackoverflow.com/questions/33942483/swift-extension-example
-        return self.replacingOccurrences(of: target, with: withString)
+        return self.replacingOccurrences(of: target, with: with)
     }
     
     /// Remove all empty spaces
     public func removeWhitespace() -> String {
         return self.replacingOccurrences(of: " ", with: "")
+    }
+    
+    /// Attempt to create a date from the current string with the given format
+    public func toDate(format: String) -> Date? {
+        /*
+         Based on the following code
+         https://stackoverflow.com/questions/33277970/how-to-convert-string-to-date-to-string-in-swift-ios
+        */
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.date(from: self)
+    }
+    
+    /// Attempt to create a date from the current string with format "MMMM dd yyyy"
+    public func toDate() -> Date? {
+        /*
+         Based on the following code
+         https://stackoverflow.com/questions/38564893/date-formatting-not-working-in-swift-3
+         */
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd yyyy"
+        return formatter.date(from: self)
     }
 }

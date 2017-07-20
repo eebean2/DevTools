@@ -120,11 +120,11 @@ public class Core {
     @available(OSX, unavailable)
     @available(watchOS, unavailable)
     @available(tvOS, unavailable)
-    public let deviceName = UIDevice.current.name
+    public var deviceName: String { return UIDevice.current.name }
     /// Device Model
     @available(OSX, unavailable)
     @available(watchOS, unavailable)
-    public let model = UIDevice.current.model
+    public var model: String { return UIDevice.current.model }
     /// Orientation of the deivce
     @available(OSX, unavailable)
     @available(watchOS, unavailable)
@@ -133,7 +133,7 @@ public class Core {
     /// OS Version
     @available(OSX, unavailable)
     @available(watchOS, unavailable)
-    public let osVersion = UIDevice.current.systemVersion
+    public var osVersion: String { return UIDevice.current.systemVersion }
     /// User Interface Type
     @available(OSX, unavailable)
     @available(watchOS, unavailable)
@@ -284,5 +284,14 @@ public class Core {
     /// Print a diagnostic message
     public static func logDiag<message>(_ diag: message) {
         print(":: DIAGNOSTIC :: \(diag)")
+    }
+    
+    /// Check if you can use our many methods and functions
+    public static func isAvailable() -> Bool {
+        if #available(OSX 10.0, iOS 2.0, tvOS 9.0, watchOS 2.0, *) {
+            return true
+        } else {
+            return false
+        }
     }
 }
