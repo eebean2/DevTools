@@ -14,6 +14,7 @@
 		2442B3667B5C235BADAC9454FC1C7F85 /* Sierra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B83561A4EE8B4FC1327DD222674DF3D /* Sierra.swift */; };
 		2AA30BE6A755952B3D6E3A4A7DD2636A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		66D9E32A3768E29EE6C519FB91389777 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD350521C99F4F091A5F79D4DDDB60EF /* UIAlertController.swift */; };
+		73EE85071F25C990009B4133 /* GenUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EE85061F25C990009B4133 /* GenUser.swift */; };
 		9B47C4A0F031D00333A960A0CC65819E /* DevTools-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A969853655BDE99C7D6451FE628127 /* DevTools-dummy.m */; };
 		A085C95830F61F27FE64423D8DC0B918 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB48C862B16A10FBAD2917EA5F7CF6A /* UIImage.swift */; };
 		A3B3F6DC401176E3ED21E1BACF3822DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -60,6 +61,7 @@
 		63601FEDE27C8B01B811EF88A22D3B45 /* UIColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		73790263CDC373FDBF102F9174330247 /* Core.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		73EE85061F25C990009B4133 /* GenUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenUser.swift; sourceTree = "<group>"; };
 		7CD0BB66A5A7A6D3210AB96790370A07 /* Pods-DevTools_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DevTools_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		84CAE653B989C59AE868E10A0CC07788 /* Pods-DevTools_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DevTools_Tests-resources.sh"; sourceTree = "<group>"; };
 		8C9229536C0C0F6061BA566B96CA0BA5 /* Pods_DevTools_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevTools_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +195,7 @@
 				4792D3370E3CB85A0CCDD3F0B6E0E469 /* Console.swift */,
 				73790263CDC373FDBF102F9174330247 /* Core.swift */,
 				23624AFCCBF6B34C3F52593151253D58 /* Date.swift */,
+				73EE85061F25C990009B4133 /* GenUser.swift */,
 				1B83561A4EE8B4FC1327DD222674DF3D /* Sierra.swift */,
 				3A4C54DA134DD838114579F5A58F862F /* String.swift */,
 				AD350521C99F4F091A5F79D4DDDB60EF /* UIAlertController.swift */,
@@ -375,6 +378,7 @@
 				9B47C4A0F031D00333A960A0CC65819E /* DevTools-dummy.m in Sources */,
 				2442B3667B5C235BADAC9454FC1C7F85 /* Sierra.swift in Sources */,
 				B2A347153609F5CCB9635DBCFB3BA8C8 /* String.swift in Sources */,
+				73EE85071F25C990009B4133 /* GenUser.swift in Sources */,
 				66D9E32A3768E29EE6C519FB91389777 /* UIAlertController.swift in Sources */,
 				FC1862EBE26524412E8A1A9FC760022A /* UIColor.swift in Sources */,
 				A085C95830F61F27FE64423D8DC0B918 /* UIImage.swift in Sources */,
