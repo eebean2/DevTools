@@ -10,6 +10,12 @@ DevTools is a combination of tools, extensions, and code ment to simplify develo
 
 Core is the base of DevTools, representing some of the most used, underused, complicated or forgotten code. This is to help simplify your projects.
 
+## DTUser
+
+Need to create a user profile, but don't know where to start? Simplely start with DTUser.current! DTUser is a generic user profile tool that allows you to get and set user data! Just call DTUser.current to get the current user, DTUser.generic(username:) to get a generic DTUser object with any username (great for when you don't need a full profile), or DTUser.unknown for when you just need a profile, but have no data to set yet!
+
+More custimizations coming soon! Soon you can save things like DOB, email address, phone number, and much more! Suggestions? Create a new issue and make a suggestion!
+
 ## Sierra
 
 Sierra is a modified version of Toast. Although only in it's infancy, there are big plans set ahead for this small tool to give developers who need more than just two lines the ability to modify and adjust the tool in ways they need to efficantly test their apps.
