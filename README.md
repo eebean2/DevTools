@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/DevTools.svg?style=flat)](http://cocoapods.org/pods/DevTools)
 [![License](https://img.shields.io/cocoapods/l/DevTools.svg?style=flat)](http://cocoapods.org/pods/DevTools)
 [![Platform](https://img.shields.io/cocoapods/p/DevTools.svg?style=flat)](http://cocoapods.org/pods/DevTools)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](AFQ67C767PDPL)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AFQ67C767PDPL)
 
 DevTools is a combination of tools, extensions, and code ment to simplify development
 
@@ -56,7 +56,7 @@ pod "DevTools"
 
 ## Donate
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](AFQ67C767PDPL)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AFQ67C767PDPL)
 
 ## Author
 
