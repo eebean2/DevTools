@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/DevTools.svg?style=flat)](http://cocoapods.org/pods/DevTools)
 [![License](https://img.shields.io/cocoapods/l/DevTools.svg?style=flat)](http://cocoapods.org/pods/DevTools)
 [![Platform](https://img.shields.io/cocoapods/p/DevTools.svg?style=flat)](http://cocoapods.org/pods/DevTools)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](eebean2@yahoo.com)
 
 DevTools is a combination of tools, extensions, and code ment to simplify development
 
@@ -52,6 +53,10 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "DevTools"
 ```
+
+## Donate
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](eebean2@yahoo.com)
 
 ## Author
 
