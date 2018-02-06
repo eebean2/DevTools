@@ -10,7 +10,7 @@
 import UIKit
 import CoreTelephony
 
-public class Core {
+public class DevCore {
     
     // MARK:- Other
     
@@ -174,11 +174,11 @@ public class Core {
         case UIUserInterfaceIdiom.carPlay:
             return "CarPlay"
         case UIUserInterfaceIdiom.pad:
-            return "Pad"
+            return "iPad"
         case UIUserInterfaceIdiom.phone:
-            return "Phone"
+            return "iPhone"
         case UIUserInterfaceIdiom.tv:
-            return "TV"
+            return "AppleTV"
         case UIUserInterfaceIdiom.unspecified:
             return "Unspecifified"
         }
@@ -293,5 +293,15 @@ public class Core {
         } else {
             return false
         }
+    }
+    
+    /// Exit your app with a failure
+    public static func saftey() {
+        exit(EXIT_FAILURE)
+    }
+    
+    /// Exit yoru app with a failure
+    public static func saftey(_ failure: Int32) {
+        exit(failure)
     }
 }

@@ -13,10 +13,14 @@ import GLKit
 import SpriteKit
 import SceneKit
 
-internal typealias ConsoleCompletion = (Console) -> Void // Public in future versions
+public enum PrintMethod {
+    case devOnly, xcodeOnly, both
+}
+
+public typealias ConsoleCompletion = (DevConsole) -> Void // Public in future versions
 private typealias BasicCompletion = () -> Void
 
-internal class Console {
+public class DevConsole {
 
     //MARK:- Basic Variables
 
@@ -25,7 +29,7 @@ internal class Console {
     private var background: UIView!
     private var setupComplete = false
     
-    //MARK:- Settings
+    //MARK:- Public Settings
     
     public let isReadOnly: Bool!
     public private(set) var isFullscreen = false
@@ -48,49 +52,41 @@ internal class Console {
         self.isReadOnly = readOnly
         self.superview = view
         self.setup() {
-            Core.logDiag("Console is not finished, please do not use")
+            DevCore.logDiag("Console is not finished, please do not use")
             completion(self)
         }
     }
     
-    @available(*, unavailable)
     convenience public init(_ controller: UIViewController, readOnly: Bool = false, completion: @escaping ConsoleCompletion) {
         self.init(controller.view, readOnly: readOnly, completion: completion)
     }
     
-    @available(*, unavailable)
     public convenience init(_ controller: UITableViewController, readOnly: Bool = false, completion: @escaping ConsoleCompletion) {
         self.init(controller.view, readOnly: readOnly, completion: completion)
     }
     
-    @available(*, unavailable)
     public convenience init(_ controller: UICollectionViewController, readOnly: Bool = false, completion: @escaping ConsoleCompletion) {
         self.init(controller.view, readOnly: readOnly, completion: completion)
     }
     
-    @available(*, unavailable)
     public convenience init(_ controller: UIPageViewController, readOnly: Bool = false, completion: @escaping ConsoleCompletion) {
         self.init(controller.view, readOnly: readOnly, completion: completion)
     }
     
-    @available(*, unavailable)
     public convenience init(_ controller: AVPlayerViewController, readOnly: Bool = false, completion: @escaping ConsoleCompletion) {
         self.init(controller.view, readOnly: readOnly, completion: completion)
     }
     
-    @available(*, unavailable)
     public convenience init(_ view: GLKView, readOnly: Bool = false, completion: @escaping ConsoleCompletion) {
         let v: UIView = view
         self.init(v, readOnly: readOnly, completion: completion)
     }
     
-    @available(*, unavailable)
     public convenience init(_ view: SKView, readOnly: Bool = false, completion: @escaping ConsoleCompletion) {
         let v: UIView = view
         self.init(v, readOnly: readOnly, completion: completion)
     }
     
-    @available(*, unavailable)
     public convenience init(_ scene: SKScene, readOnly: Bool = false, completion: @escaping ConsoleCompletion) {
         let v: UIView = scene.view!
         self.init(v, readOnly: readOnly, completion: completion)
@@ -101,7 +97,7 @@ internal class Console {
         self.superview = view
         self.isFullscreen = true
         self.setup() {
-            Core.logDiag("Required Init Fisned")
+            DevCore.logDiag("Required Init Fisned")
             completion(self)
         }
     }
@@ -121,16 +117,16 @@ internal class Console {
         }
     }
 
-    private func setupBackground(completion: () -> Void) {
+    private func setupBackground(completion: BasicCompletion) {
         if isFullscreen {
             background = UIView(frame: superview.frame)
             background.backgroundColor = .clear
             superview.addSubview(background)
             
             var frame = CGRect()
-            if superview.frame.minY < Core().statusBarHeight {
-                if !Core().isStatusBarHidden {
-                    frame = CGRect(x: superview.frame.minX, y: Core().statusBarHeight + 8, width: superview.frame.width, height: superview.frame.height - (Core().statusBarHeight + 8))
+            if superview.frame.minY < DevCore().statusBarHeight {
+                if !DevCore().isStatusBarHidden {
+                    frame = CGRect(x: superview.frame.minX, y: DevCore().statusBarHeight + 8, width: superview.frame.width, height: superview.frame.height - (DevCore().statusBarHeight + 8))
                 }
             } else {
                 frame = superview.frame
@@ -172,7 +168,7 @@ internal class Console {
 
     public func removeFromSuperview() {
         if !setupComplete {
-            Core.logError("You must complete setup first")
+            DevCore.logError("You must complete setup first")
             return
         }
         background.removeFromSuperview()
@@ -180,7 +176,7 @@ internal class Console {
 
     public func removeAndReset() {
         if !setupComplete {
-            Core.logError("You must complete setup first")
+            DevCore.logError("You must complete setup first")
             return
         }
         background.removeFromSuperview()
@@ -197,7 +193,7 @@ internal class Console {
 
     public func print<Message>(_ message: Message, method: PrintMethod = .both) {
         if !setupComplete {
-            Core.logConsoleError("You must complete setup first")
+            DevCore.logConsoleError("You must complete setup first")
             return
         }
         switch method {
@@ -209,10 +205,10 @@ internal class Console {
                 i.append(NSAttributedString(string: "\(message)\n", attributes: [NSForegroundColorAttributeName: diagColor]))
             #endif
             console.attributedText = i
-            Core.log(message)
+            DevCore.log(message)
         case .xcodeOnly:
-            Core.log(message)
-        case .default:
+            DevCore.log(message)
+        case .devOnly:
             let i = NSMutableAttributedString(attributedString: console.attributedText)
             #if swift(>=4.0)
                 i.append(NSAttributedString(string: "\(message)\n", attributes: [NSAttributedStringKey.foregroundColor: diagColor]))
@@ -225,7 +221,7 @@ internal class Console {
     
     public func printDiag<Message>(_ diagnostic: Message, method: PrintMethod = .both) {
         if !setupComplete {
-            Core.logConsoleError("You must complete setup first")
+            DevCore.logConsoleError("You must complete setup first")
             return
         }
         switch method {
@@ -237,10 +233,10 @@ internal class Console {
                 i.append(NSAttributedString(string: ":: DIAGNOSTIC :: \(diagnostic)\n)", attributes: [NSForegroundColorAttributeName: diagColor]))
             #endif
             console.attributedText = i
-            Core.logDiag(diagnostic)
+            DevCore.logDiag(diagnostic)
         case .xcodeOnly:
-            Core.logDiag(diagnostic)
-        case .default:
+            DevCore.logDiag(diagnostic)
+        case .devOnly:
             let i = NSMutableAttributedString(attributedString: console.attributedText)
             #if swift(>=4.0)
                 i.append(NSAttributedString(string: ":: DIAGNOSTIC :: \(diagnostic)\n)", attributes: [NSAttributedStringKey.foregroundColor: diagColor]))
@@ -253,7 +249,7 @@ internal class Console {
     
     public func printWarning<Message>(_ warning: Message, method: PrintMethod = .both) {
         if !setupComplete {
-            Core.logConsoleError("You must complete setup first")
+            DevCore.logConsoleError("You must complete setup first")
             return
         }
         switch method {
@@ -265,10 +261,10 @@ internal class Console {
                 i.append(NSAttributedString(string: ":: WARNING :: \(warning)\n)", attributes: [NSForegroundColorAttributeName: warningColor]))
             #endif
             console.attributedText = i
-            Core.logWarning(warning)
+            DevCore.logWarning(warning)
         case .xcodeOnly:
-            Core.logWarning(warning)
-        case .default:
+            DevCore.logWarning(warning)
+        case .devOnly:
             let i = NSMutableAttributedString(attributedString: console.attributedText)
             #if swift(>=4.0)
                 i.append(NSAttributedString(string: ":: WARNING :: \(warning)\n)", attributes: [NSAttributedStringKey.foregroundColor: warningColor]))
@@ -278,12 +274,40 @@ internal class Console {
             console.attributedText = i
         }
     }
+    
+    public func printError<Message>(_ error: Message, method: PrintMethod = .both) {
+        if !setupComplete {
+            DevCore.logConsoleError("You must complete setup first")
+            return
+        }
+        switch method {
+        case .both:
+            let i = NSMutableAttributedString(attributedString: console.attributedText)
+            #if swift(>=4.0)
+                i.append(NSAttributedString(string: ":: ERROR :: \(error)\n)", attributes: [NSAttributedStringKey.foregroundColor: errorColor]))
+            #else
+                i.append(NSAttributedString(string: ":: ERROR :: \(error)\n)", attributes: [NSForegroundColorAttributeName: errorColor]))
+            #endif
+            console.attributedText = i
+            DevCore.logError(error)
+        case .xcodeOnly:
+            DevCore.logError(error)
+        case .devOnly:
+            let i = NSMutableAttributedString(attributedString: console.attributedText)
+            #if swift(>=4.0)
+                i.append(NSAttributedString(string: ":: ERROR :: \(error)\n)", attributes: [NSAttributedStringKey.foregroundColor: errorColor]))
+            #else
+                i.append(NSAttributedString(string: ":: ERROR :: \(error)\n)", attributes: [NSForegroundColorAttributeName: errorColor]))
+            #endif
+            console.attributedText = i
+        }
+    }
 
     //MARK:- Public Functions
 
     public func clear() {
         if !setupComplete {
-            Core.logError("You must complete setup first")
+            DevCore.logError("You must complete setup first")
             return
         }
         // Clear Console
@@ -291,29 +315,25 @@ internal class Console {
     
     public func printDiagnostic() {
         if setupComplete {
-            Core.log("\nConsole Diagnostic:\n")
-            Core.logDiag("Console Background: \(backgroundColor)")
-            Core.logDiag("Console Text Color: \(textColor.description)")
-            Core.logDiag("Console Warning Color: \(warningColor.description)")
-            Core.logDiag("Console Error Color: \(errorColor.description)")
-            Core.logDiag("Console Diagnostic Color: \(diagColor.description)")
-            Core.logDiag("FullScreen Enabled: \(fullscreenEnabled)")
-            Core.logDiag("Is Fullscreen: \(isFullscreen)")
-            Core.logDiag("Is Read Only: \(isReadOnly!)\n")
-            Core.logDiag("Console Text:\n")
+            DevCore.log("\nConsole Diagnostic:\n")
+            DevCore.logDiag("Console Background: \(backgroundColor)")
+            DevCore.logDiag("Console Text Color: \(textColor.description)")
+            DevCore.logDiag("Console Warning Color: \(warningColor.description)")
+            DevCore.logDiag("Console Error Color: \(errorColor.description)")
+            DevCore.logDiag("Console Diagnostic Color: \(diagColor.description)")
+            DevCore.logDiag("FullScreen Enabled: \(fullscreenEnabled)")
+            DevCore.logDiag("Is Fullscreen: \(isFullscreen)")
+            DevCore.logDiag("Is Read Only: \(isReadOnly!)\n")
+            DevCore.logDiag("Console Text:\n")
             if console.text.isEmpty {
-                Core.logDiag("Console has no text")
+                DevCore.logDiag("Console has no text")
             } else {
-                Core.logDiag(console.text!)
+                DevCore.logDiag(console.text!)
             }
         } else {
-            Core.log("Console has not been setup yet")
+            DevCore.log("Console has not been setup yet")
         }
     }
-}
-
-public enum PrintMethod {
-    case `default`, xcodeOnly, both
 }
 
 

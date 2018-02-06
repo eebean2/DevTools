@@ -1,9 +1,16 @@
-//
-//  String.swift
-//  DevTools
-//
-//  Created by Erik Bean on 6/15/17.
-//
+/*
+ * String Extention
+ *
+ * Created by Erik Bean on 6/15/17
+ *
+ * You are free to unlock this file and edit as you wish
+ * This file is yours to extend, manipulate, or change
+ * in any way, shape, or form. Most of this code is not
+ * mine to begin with, and only centralized here to give
+ * a more swifty experiance!
+ *
+ *                                              - Erik
+ */
 
 import Foundation
 
@@ -35,7 +42,7 @@ extension String {
         // Expanded idea of the function found here
         // https://gist.github.com/albertbori/0faf7de867d96eb83591
         
-        if self.characters.last == "Y" || self.characters.last == "y" {
+        if self.last == "Y" || self.last == "y" {
             if isName {
                 if needsApostrophe {
                     if self == self.lowercased() {
@@ -51,14 +58,14 @@ extension String {
                     }
                 }
             } else {
-                let s = self.characters.dropLast()
+                let s = self.dropLast()
                 if self == self.lowercased() {
                     return "\(s)ies"
                 } else {
                     return "\(s)IES"
                 }
             }
-        } else if self.characters.last == "S" || self.characters.last == "s" && !isName {
+        } else if self.last == "S" || self.last == "s" && !isName {
             return self
         } else {
             if needsApostrophe {

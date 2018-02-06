@@ -1,5 +1,5 @@
 //
-//  Sierra.swift
+//  Toast.swift
 //  DTCore
 //
 //  Created by Erik Bean on 5/3/17.
@@ -12,7 +12,7 @@ import UIKit
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 @available(OSX, unavailable)
-public class Sierra: UIView {
+public class Toast: UIView {
     
     /// If you see this... your snooping... and changing this would make bad things happen...
     private var last = CGPoint.zero
@@ -24,7 +24,7 @@ public class Sierra: UIView {
     public var secondaryTitle = UILabel()
     /// The changeable text of the secondary label
     public var secondary = UILabel()
-    /// Enable to restrict Sierra to one place
+    /// Enable to restrict Toast to one place
     public var disableDragging = false
     /// If you see this... your snooping... and changing this would make bad things happen...
     private var primaryWidth: NSLayoutConstraint!
@@ -145,7 +145,7 @@ public class Sierra: UIView {
         }
     }
     
-    /// Add to your chosen view, recommended your top most view to not accidently hide Sierra
+    /// Add to your chosen view, recommended your top most view to not accidently hide Toast
     @objc(addToView:)
     public func addTo(_ view: UIView) {
         let lo = labelOne()
@@ -160,7 +160,7 @@ public class Sierra: UIView {
         view.bringSubview(toFront: self)
     }
     
-    /// Add to your chosen controller, recommended your top most controller to not accidently hide Sierra
+    /// Add to your chosen controller, recommended your top most controller to not accidently hide Toast
     @objc(addToController:)
     public func addTo(_ controller: UIViewController) {
         addTo(controller.view)
@@ -170,7 +170,7 @@ public class Sierra: UIView {
     @available(*, renamed: "addTo(_:)")
     @objc(oldAddToView:)
     public func addTo(view: UIView) {
-        Core.logError("\(#function) has changed! Please use the new version for better future adaption")
+        DevCore.logError("\(#function) has changed! Please use the new version for better future adaption")
         addTo(view)
     }
     
@@ -178,11 +178,11 @@ public class Sierra: UIView {
     @available(*, renamed: "addTo(_:)")
     @objc(oldAddToController:)
     public func addTo(controller: UIViewController) {
-        Core.logError("\(#function) has changed! Please use the new version for better future adaption")
+        DevCore.logError("\(#function) has changed! Please use the new version for better future adaption")
         addTo(controller.view)
     }
     
-    /// Remove Sierra from the superview
+    /// Remove Toast from the superview
     public func remove() {
         removeFromSuperview()
     }

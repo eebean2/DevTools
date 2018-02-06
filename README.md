@@ -17,11 +17,11 @@ Need to create a user profile, but don't know where to start? Simplely start wit
 
 More custimizations coming soon! Soon you can save things like DOB, email address, phone number, and much more! Suggestions? Create a new issue and make a suggestion!
 
-## Sierra
+## Toast
 
-Sierra is a modified version of Toast. Although only in it's infancy, there are big plans set ahead for this small tool to give developers who need more than just two lines the ability to modify and adjust the tool in ways they need to efficantly test their apps.
+Toast is a modified version of older Toast diatnostic overlay tool. Although only in it's infancy, there are big plans set ahead for this small tool to give developers who need more than just two lines the ability to modify and adjust the tool in ways they need to efficantly test their apps.
 
-Sierra is unique in it's ability to be relocated anywhere around the screen and reset to the top left. You can also set the content of Sierra to any string you need to help you debug your app.
+Toast is unique in it's ability to be relocated anywhere around the screen and reset to the top left. You can also set the content of Toast to any string you need to help you debug your app.
 
 ## Extensions
 
