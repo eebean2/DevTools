@@ -13,13 +13,13 @@ Core is the base of DevTools, representing some of the most used, underused, com
 
 ## DTUser
 
-Need to create a user profile, but don't know where to start? Simplely start with `DTUser.current`! `DTUser` is a generic user profile tool that allows you to get and set user data! Just call `DTUser.current` to get the current user, `DTUser.generic(username:)` to get a generic `DTUser` object with any username (great for when you don't need a full profile), or `DTUser.unknown` for when you just need a profile, but have no data to set yet!
+Need to create a user profile, but don't know where to start? Simply start with `DTUser.current`! `DTUser` is a generic user profile tool that allows you to get and set user data! Just call `DTUser.current` to get the current user, `DTUser.generic(username:)` to get a generic `DTUser` object with any username (great for when you don't need a full profile), or `DTUser.unknown` for when you just need a profile, but have no data to set yet!
 
-More custimizations coming soon! Soon you can save things like DOB, email address, phone number, and much more! Suggestions? Create a new issue and make a suggestion!
+More customizations coming soon! Soon you can save things like DOB, email address, phone number, and much more! Suggestions? Create a new issue and make a suggestion!
 
 ## Toast
 
-Toast is a modified version of the older Toast's diagnostic overlay tool. Although only in its infancy, there are big plans set ahead for this small tool. It aims to give developers who need more than just two lines the ability to modify and adjust the tool in ways they need to efficantly test their apps.
+Toast is a modified version of the older Toast's diagnostic overlay tool. Although only in its infancy, there's big plans set ahead for this small tool. It aims to give developers who need more than just two lines the ability to modify and adjust the tool in ways they need to efficantly test their apps.
 
 Toast is unique in its ability to be relocated anywhere around the screen and reset to the top left. You can also set the content of Toast to any string you need to help you debug your app.
 
