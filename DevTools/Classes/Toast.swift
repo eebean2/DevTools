@@ -1,10 +1,9 @@
-//
-//  Toast.swift
-//  DTCore
-//
-//  Created by Erik Bean on 5/3/17.
-//  Copyright © 2017 Erik Bean. All rights reserved.
-//
+/*
+ * Toast
+ *
+ * Created by Erik Bean on 5/3/17
+ * Copyright © 2018 Erik Bean
+ */
 
 import UIKit
 
@@ -26,9 +25,7 @@ public class Toast: UIView {
     public var secondary = UILabel()
     /// Enable to restrict Toast to one place
     public var disableDragging = false
-    /// If you see this... your snooping... and changing this would make bad things happen...
     private var primaryWidth: NSLayoutConstraint!
-    /// If you see this... your snooping... and changing this would make bad things happen...
     private var secondaryWidth: NSLayoutConstraint!
 
     /// Please do not override me... master has alrady overridden me... if you wish to custimize me, please submit custimization request via issues on github!
@@ -40,12 +37,10 @@ public class Toast: UIView {
         addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(zoomShrink)))
     }
     
-    /// Yep... always required...
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
-    /// If you see this... your snooping...
     @objc(detectPanWithSender:)
     private func detectPan(_ sender: UIPanGestureRecognizer) {
         if !disableDragging {
@@ -54,14 +49,12 @@ public class Toast: UIView {
         }
     }
     
-    /// If you see this... your snooping...
     @objc(zoomShrinkWithSender:)
     private func zoomShrink(_ sender: UIPinchGestureRecognizer) {
         print("Scale: \(sender.scale)")
         print("Velosity: \(sender.velocity)")
     }
     
-    /// If you see this... your snooping...
     private func getRect() -> CGRect {
         let x: CGFloat = 20
         let y: CGFloat = 30
@@ -76,7 +69,6 @@ public class Toast: UIView {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
-    /// If you see this... your snooping...
     private func labelOne() -> Bool {
         primaryTitle.frame = CGRect(x: 16, y: 16, width: 42, height: 21)
         primary.frame = CGRect(x: 66, y: 16, width: frame.width - (40 + primaryTitle.frame.width), height: 21)
@@ -108,7 +100,6 @@ public class Toast: UIView {
         }
     }
     
-    /// If you see this... your snooping...
     private func labelTwo() -> Bool {
         secondaryTitle.frame = CGRect(x: 16, y: 45, width: 42, height: 21)
         secondary.frame = CGRect(x: 66, y: 45, width: frame.width - (40 + secondaryTitle.frame.width), height: 21)
@@ -166,22 +157,6 @@ public class Toast: UIView {
         addTo(controller.view)
     }
     
-    /// I've been renamed since Xcode learned to be nice with @objc now! Please use the new and improved me!
-    @available(*, renamed: "addTo(_:)")
-    @objc(oldAddToView:)
-    public func addTo(view: UIView) {
-        DevCore.logError("\(#function) has changed! Please use the new version for better future adaption")
-        addTo(view)
-    }
-    
-    /// I've been renamed since Xcode learned to be nice with @objc now! Please use the new and improved me!
-    @available(*, renamed: "addTo(_:)")
-    @objc(oldAddToController:)
-    public func addTo(controller: UIViewController) {
-        DevCore.logError("\(#function) has changed! Please use the new version for better future adaption")
-        addTo(controller.view)
-    }
-    
     /// Remove Toast from the superview
     public func remove() {
         removeFromSuperview()
@@ -214,4 +189,32 @@ public class Toast: UIView {
             self.secondary.sizeToFit()
         }
     }
+    
+    private var isDarkMode: Bool = false
+    
+    public func setDarkMode() throws {
+        print("Setting Dark Mode")
+        print(self.isDarkMode)
+        if !self.isDarkMode {
+            print("Setting Background")
+            self.isDarkMode = true
+            self.backgroundColor = .white
+        } else {
+            throw NSError(domain: "DevTools", code: 001, userInfo: [NSLocalizedDescriptionKey: "Already in Dark Mode"])
+        }
+    }
+    
+    public func setLightMode() throws {
+        print("Setting Light Mode")
+        print(self.isDarkMode)
+        if self.isDarkMode {
+            print("Setting Background")
+            self.isDarkMode = false
+            self.backgroundColor = UIColor(white: 0, alpha: 0.25)
+        } else {
+            throw NSError(domain: "DevTools", code: 001, userInfo: [NSLocalizedDescriptionKey: "Already in Light Mode"])
+        }
+    }
+    
+    
 }

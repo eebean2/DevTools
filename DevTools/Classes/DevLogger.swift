@@ -1,10 +1,9 @@
-//
-//  DevLogger.swift
-//  Pods
-//
-//  Created by Erik Bean on 7/25/17.
-//
-//
+/*
+ * DevLogger
+ *
+ * Created by Erik Bean on 7/25/17
+ * Copyright © 2018 Erik Bean
+ */
 
 import Foundation
 

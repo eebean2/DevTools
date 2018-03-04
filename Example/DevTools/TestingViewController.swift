@@ -9,11 +9,9 @@
 import UIKit
 import DevTools
 
-class TestingViewController: UIViewController, UIThemeDelegate {
+class TestingViewController: UIViewController {
     
     @IBOutlet var label: UILabel!
-    
-    let manager = UIThemeManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +23,11 @@ class TestingViewController: UIViewController, UIThemeDelegate {
         try! user.addData(key: userFirstName, data: "Erik")
         try! user.addData(key: userProfilePicture, data: UIImage())
         try! user.addData(key: userToken, data: "kjsaghpopaijlkajsdkjfkjdkl;a--2017")
-        
-        manager.delegate = self
-        
-        manager.add(manager.set(object: view, toTheme: .homebrew))
-        manager.add(manager.set(object: label, toTheme: .homebrew))
+//
+//        manager.delegate = self
+//
+//        manager.add(manager.set(object: view, toTheme: .homebrew))
+//        manager.add(manager.set(object: label, toTheme: .homebrew))
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,12 +46,13 @@ class TestingViewController: UIViewController, UIThemeDelegate {
 //        notif.present(notification: NotificationInfo())
 //    }
 
+    // Still in testing
     @IBAction func switchTheme(_ sender: UIButton) {
-        if manager.isDarkMode {
-            manager.disableThemes()
-        } else {
-            manager.enableDarkMode()
-        }
+//        if manager.isDarkMode {
+//            manager.disableThemes()
+//        } else {
+//            manager.enableDarkMode()
+//        }
     }
     
     @IBAction func done(_ sender: UIButton) {

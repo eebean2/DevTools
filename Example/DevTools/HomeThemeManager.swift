@@ -12,26 +12,36 @@ import DevTools
 extension ViewController {
     
     @IBAction func changeTheme(_ sender: UIButton) {
-        let title = UIThemeElement(dtTitle, lightColor: .black, darkColor: .white)
-        let background = UIThemeElement(view, lightColor: .groupTableViewBackground, darkColor: .black)
-        if isDarkMode {
-            UIView.animate(withDuration: 0.5, animations: {
-                background.disableDarkMode()
-                self.isDarkMode = false
-            })
-            UIView.animate(withDuration: 1.5, animations: {
-                title.disableDarkMode()
-                self.manager.setStatusBar(.default)
-            })
-        } else {
-            UIView.animate(withDuration: 0.5, animations: {
-                background.enableDarkMode()
-                self.isDarkMode = true
-            })
-            UIView.animate(withDuration: 1.5, animations: { 
-                title.enableDarkMode()
-                self.manager.setStatusBar(.lightContent)
-            })
-        }
+//        let title = UIThemeElement(dtTitle, lightColor: .black, darkColor: .white)
+//        let background = UIThemeElement(view, lightColor: .groupTableViewBackground, darkColor: .black)
+//        if isDarkMode {
+//            UIView.animate(withDuration: 0.5, animations: {
+//                background.disableDarkMode()
+//                do {
+//                    try self.t.setLightMode()
+//                } catch let error {
+//                    print(error.localizedDescription)
+//                }
+//                self.isDarkMode = false
+//            })
+//            UIView.animate(withDuration: 1.5, animations: {
+//                title.disableDarkMode()
+//                self.manager.setStatusBar(.default)
+//            })
+//        } else {
+//            UIView.animate(withDuration: 0.5, animations: {
+//                background.enableDarkMode()
+//                do {
+//                    try self.t.setDarkMode()
+//                } catch let error {
+//                    print(error.localizedDescription)
+//                }
+//                self.isDarkMode = true
+//            })
+//            UIView.animate(withDuration: 1.5, animations: {
+//                title.enableDarkMode()
+//                self.manager.setStatusBar(.lightContent)
+//            })
+//        }
     }
 }

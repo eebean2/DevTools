@@ -1,16 +1,14 @@
 /*
- *  DevTools
+ * Core
  *
- *  Core.swift
- *
- *  Created by Erik Bean on 4.24.17
- *  Copyright © 2017 Erik Bean
+ * Created by Erik Bean on 4/24/17
+ * Copyright © 2018 Erik Bean
  */
 
 import UIKit
 import CoreTelephony
 
-public class DevCore {
+public final class DevCore {
     
     // MARK:- Other
     
@@ -251,7 +249,7 @@ public class DevCore {
     
     // Simulator Check, returns a bool
     private func simualtor() -> Bool {
-        #if (arch(i386) || arch(x86_64)) && (os(iOS) || os(watchOS) || os(tvOS))
+        #if targetEnvironment(simulator)
             return true
         #else
             return false

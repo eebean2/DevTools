@@ -18,17 +18,19 @@ class ViewController: UIViewController {
         The following code is setup and can be
         safely ignored.
      */
-    let manager = UIThemeManager()
+//    let manager = UIThemeMan ager()
     var isDarkMode = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // For future code
     }
+    
     /*
         A demo console will be created here
      */
     @IBAction func console(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "consoleSegue", sender: self)
     }
     
     /*
@@ -101,6 +103,12 @@ class ViewController: UIViewController {
         
         // Here we log the device information
         DevCore().logDevice()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if tPresent {
+            t.remove()
+        }
     }
 }
 

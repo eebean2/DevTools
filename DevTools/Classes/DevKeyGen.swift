@@ -1,10 +1,9 @@
-//
-//  DevKeyGen.swift
-//  Pods
-//
-//  Created by Erik Bean on 7/25/17.
-//
-//
+/*
+ * DevKeyGen
+ *
+ * Created by Erik Bean on 7/25/17
+ * Copyright © 2018 Erik Bean
+ */
 
 import Foundation
 
@@ -28,7 +27,7 @@ private enum LettersIncluded {
     case number
 }
 
-/// A key generator
+/// Random Key Generator
 public class DevKeyGen {
     private let uppers = [
         "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",

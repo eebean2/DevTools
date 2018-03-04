@@ -13,6 +13,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		735725ED20297C1100A6A9EC /* ConsoleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735725EC20297C1100A6A9EC /* ConsoleController.swift */; };
 		73B074601F476E4700C0E66E /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B0745F1F476E4700C0E66E /* TestingViewController.swift */; };
 		73B074621F47921800C0E66E /* HomeThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B074611F47921800C0E66E /* HomeThemeManager.swift */; };
 		73BD92391F16AE1800515CA4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BD92381F16AE1800515CA4 /* DetailViewController.swift */; };
@@ -45,10 +46,11 @@
 		607FACE51AFB9204008FA782 /* DevTools_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DevTools_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		735725EC20297C1100A6A9EC /* ConsoleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleController.swift; sourceTree = "<group>"; };
 		73B0745F1F476E4700C0E66E /* TestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		73B074611F47921800C0E66E /* HomeThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeThemeManager.swift; sourceTree = "<group>"; };
 		73BD92381F16AE1800515CA4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		95927FA5941B79EF1C0C5942 /* DevTools.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DevTools.podspec; path = ../DevTools.podspec; sourceTree = "<group>"; };
+		95927FA5941B79EF1C0C5942 /* DevTools.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DevTools.podspec; path = ../DevTools.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A7AA88C94BE109E8E48BEBD0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		AD1A352475B3A4915DF2459D /* Pods-DevTools_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevTools_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-DevTools_Example/Pods-DevTools_Example.release.xcconfig"; sourceTree = "<group>"; };
 		CA462C6157944E9DA36182BC /* Pods_DevTools_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevTools_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				73BD92381F16AE1800515CA4 /* DetailViewController.swift */,
 				73B0745F1F476E4700C0E66E /* TestingViewController.swift */,
+				735725EC20297C1100A6A9EC /* ConsoleController.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for DevTools";
@@ -219,7 +222,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -384,6 +387,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				73B074621F47921800C0E66E /* HomeThemeManager.swift in Sources */,
 				73B074601F476E4700C0E66E /* TestingViewController.swift in Sources */,
+				735725ED20297C1100A6A9EC /* ConsoleController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				73BD92391F16AE1800515CA4 /* DetailViewController.swift in Sources */,
 			);
@@ -439,12 +443,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -472,7 +478,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -496,12 +502,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -522,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -539,6 +547,7 @@
 			baseConfigurationReference = 2F081D9E773C2A3A2E29D2D8 /* Pods-DevTools_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEVELOPMENT_TEAM = LBL5W959W4;
 				INFOPLIST_FILE = DevTools/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -555,6 +564,7 @@
 			baseConfigurationReference = AD1A352475B3A4915DF2459D /* Pods-DevTools_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEVELOPMENT_TEAM = LBL5W959W4;
 				INFOPLIST_FILE = DevTools/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -570,6 +580,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F76EFE4501D68F29301CAA68 /* Pods-DevTools_Tests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEVELOPMENT_TEAM = LBL5W959W4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -591,6 +602,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 09065720E19CB5068B03F5B0 /* Pods-DevTools_Tests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				DEVELOPMENT_TEAM = LBL5W959W4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
