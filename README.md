@@ -23,6 +23,10 @@ Toast is a modified version of the older Toast's diagnostic overlay tool. Althou
 
 Toast is unique in its ability to be relocated anywhere around the screen and reset to the top left. You can also set the content of Toast to any string you need to help you debug your app.
 
+## UITheme
+
+UITheme is a set of extentions to help you quickly and easily theme your apps. All you have to do is save your preferances into a UIThemeProfile for your object, then call `[your_object].enableTheme(profile: UIThemeProfile)` to enable the theme!
+
 ## Extensions
 
 Extensions are the heart and sole of developers, and with DevTools, we are trying to give you the most used, most useful, and best in one place. From checking if a string is an email, to adding a view to another view and sending it to the back. There is a large list of them and we will only add the ones that are non-intrusive, do not conflict with the system, and benefit everyone!

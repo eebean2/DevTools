@@ -1,10 +1,9 @@
-//
-//  UIThemeElement.swift
-//  UITheme
-//
-//  Created by Erik Bean on 2/8/18.
-//  Copyright © 2018 Brick Water Studios. All rights reserved.
-//
+/*
+ * UIThemeProfile
+ *
+ * Created by Erik Bean on 2/8/18
+ * Copyright © 2018 Erik Bean
+ */
 
 import UIKit
 
@@ -71,8 +70,12 @@ public enum UIThemeProfileType {
 // MARK: -UIThemeProfile
 @objc public class UIThemeProfile: NSObject {
     
+    /// The element which is being themed
     public var elementType: UIThemeProfileType = .uninit
+    /// Animate the status bar
+    /// - note: Default = false
     public var statusBar: Bool = false
+    /// Time to animate
     public var animateTime: TimeInterval = 0.5
     
     // MARK: -View
@@ -103,15 +106,11 @@ public enum UIThemeProfileType {
         public var defaultAttributedText: NSMutableAttributedString?
         public var themeAttributedText: NSMutableAttributedString?
         
-        override public init(defaultBackground: UIColor = .clear, themeBackground: UIColor = .clear) {
-            super.init(defaultBackground: defaultBackground, themeBackground: themeBackground)
-            super.elementType = .label
-        }
-        
-        convenience public init(defaultTextColor: UIColor, themeTextColor: UIColor) {
-            self.init()
+        public init(defaultTextColor: UIColor, themeTextColor: UIColor) {
+            super.init(defaultBackground: .clear, themeBackground: .clear)
             self.defaultTextColor = defaultTextColor
             self.themeTextColor = themeTextColor
+            super.elementType = .label
         }
     }
     

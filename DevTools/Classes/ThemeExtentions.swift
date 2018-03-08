@@ -1,10 +1,9 @@
-//
-//  UIView.swift
-//  UITheme
-//
-//  Created by Erik Bean on 2/7/18.
-//  Copyright © 2018 Brick Water Studios. All rights reserved.
-//
+/*
+ * ThemeExtentions
+ *
+ * Created by Erik Bean on 2/7/18
+ * Copyright © 2018 Erik Bean
+ */
 
 import UIKit
 
@@ -61,7 +60,7 @@ extension UIView {
 
 // MARK: -TableView
 extension UITableView {
-    public func enableTheme(profile: UIThemeProfile.label, animated: Bool = true) throws {
+    public func enableTheme(profile: UIThemeProfile.tableview, animated: Bool = true) throws {
         if profile.elementType != .label {
             throw UIThemeError.wrongProfileType
         } else {
@@ -78,7 +77,7 @@ extension UITableView {
         }
     }
     
-    public func disableTheme(profile: UIThemeProfile.label, animated: Bool = true) throws {
+    public func disableTheme(profile: UIThemeProfile.tableview, animated: Bool = true) throws {
         if profile.elementType != .label {
             throw UIThemeError.wrongProfileType
         } else {

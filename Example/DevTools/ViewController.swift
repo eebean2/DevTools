@@ -14,16 +14,18 @@ class ViewController: UIViewController {
     // Title
     @IBOutlet var dtTitle: UILabel!
     
-    /*
-        The following code is setup and can be
-        safely ignored.
-     */
-//    let manager = UIThemeMan ager()
-    var isDarkMode = false
+    /// UITheme Manager
+    let manager = UITheme.manager
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // For future code
+        // Setup our theme elements and add them to the theme pool
+        let titleProfile = UIThemeProfile.label(defaultTextColor: .black, themeTextColor: .white)
+        let title = UIThemeElement(element: dtTitle, profile: titleProfile)
+        let backProfile = UIThemeProfile.view(defaultBackground: .groupTableViewBackground, themeBackground: .black)
+        backProfile.statusBar = true
+        let background = UIThemeElement(element: view, profile: backProfile)
+        manager.addToPool([title, background])
     }
     
     /*

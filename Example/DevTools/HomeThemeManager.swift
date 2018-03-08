@@ -12,36 +12,30 @@ import DevTools
 extension ViewController {
     
     @IBAction func changeTheme(_ sender: UIButton) {
-//        let title = UIThemeElement(dtTitle, lightColor: .black, darkColor: .white)
-//        let background = UIThemeElement(view, lightColor: .groupTableViewBackground, darkColor: .black)
-//        if isDarkMode {
-//            UIView.animate(withDuration: 0.5, animations: {
-//                background.disableDarkMode()
-//                do {
-//                    try self.t.setLightMode()
-//                } catch let error {
-//                    print(error.localizedDescription)
-//                }
-//                self.isDarkMode = false
-//            })
-//            UIView.animate(withDuration: 1.5, animations: {
-//                title.disableDarkMode()
-//                self.manager.setStatusBar(.default)
-//            })
+        let titleProfile = UIThemeProfile.label(defaultTextColor: .black, themeTextColor: .white)
+        let title = UIThemeElement(element: dtTitle, profile: titleProfile)
+        do {
+//            try dtTitle.enableTheme(profile: titleProfile)
+            try title.enableTheme()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        let backProfile = UIThemeProfile.view(defaultBackground: .groupTableViewBackground, themeBackground: .black)
+        backProfile.statusBar = true
+        let background = UIThemeElement(element: view, profile: backProfile)
+        try! background.enableTheme()
+//        if !manager.isThemeOn {
+//            do {
+//                try manager.enableTheme(animated: false)
+//            } catch let error {
+//                print(error.localizedDescription)
+//            }
 //        } else {
-//            UIView.animate(withDuration: 0.5, animations: {
-//                background.enableDarkMode()
-//                do {
-//                    try self.t.setDarkMode()
-//                } catch let error {
-//                    print(error.localizedDescription)
-//                }
-//                self.isDarkMode = true
-//            })
-//            UIView.animate(withDuration: 1.5, animations: {
-//                title.enableDarkMode()
-//                self.manager.setStatusBar(.lightContent)
-//            })
+//            do {
+//                try manager.disableTheme()
+//            } catch let error {
+//                print(error.localizedDescription)
+//            }
 //        }
     }
 }
