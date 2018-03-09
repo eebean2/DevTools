@@ -24,7 +24,7 @@ internal class DevNotification {
     }
 }
 
-public struct NotificationInfo {
+internal struct NotificationInfo {
     public let title: String
     public var subTitle: String?
     public var message: String?

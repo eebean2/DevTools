@@ -7,15 +7,15 @@
 
 import UIKit
 
-public typealias ThemeElement = AnyObject
+public typealias ThemeElement = NSObject
 
-public class UIThemeElement: NSObject {
+public final class UIThemeElement: NSObject {
     public var element: ThemeElement
     public var profile: UIThemeProfile
     
     /// Create a new themed element
     ///
-    /// - paramaters:
+    /// - parameters:
     ///     - element: The UI element to be themed
     ///     - profile: The UIThemeProfile for the UI element to be custimized
     public init(element: ThemeElement, profile: UIThemeProfile) {
@@ -28,16 +28,10 @@ public class UIThemeElement: NSObject {
     ///
     /// - throws: An error of type UIThemeError
     ///
-    /// - paramaters animated: Default = true, animates the transition between themes
-    public final func enableTheme(animated: Bool = true) throws {
-        switch element.self {
-        case is UIView:
-            if profile.elementType != .view {
-                throw UIThemeError.wrongProfileType
-            } else {
-                let element = self.element as! UIView
-                try element.enableTheme(profile: profile as! UIThemeProfile.view, animated: animated)
-            }
+    /// - parameters:
+    ///     - animated: Default = true, animates the transition between themes
+    public func enableTheme(animated: Bool = true) throws {
+        switch element {
         case is UILabel:
             if profile.elementType != .label {
                 throw UIThemeError.wrongProfileType
@@ -213,6 +207,13 @@ public class UIThemeElement: NSObject {
                 let element = self.element as! UISearchBar
                 try element.enableTheme(profile: profile as! UIThemeProfile.searchbar, animated: animated)
             }
+        case is UIView:
+            if profile.elementType != .view {
+                throw UIThemeError.wrongProfileType
+            } else {
+                let element = self.element as! UIView
+                try element.enableTheme(profile: profile as! UIThemeProfile.view, animated: animated)
+            }
         default:
             throw UIThemeError.unsupportedType
         }
@@ -222,16 +223,10 @@ public class UIThemeElement: NSObject {
     ///
     /// - throws: An error of type UIThemeError
     ///
-    /// - paramaters animated: Default = true, animates the transition between themes
-    public final func disableTheme(animated: Bool = true) throws {
+    /// - parameters:
+    ///     - animated: Default = true, animates the transition between themes
+    public func disableTheme(animated: Bool = true) throws {
         switch element.self {
-        case is UIView:
-            if profile.elementType != .view {
-                throw UIThemeError.wrongProfileType
-            } else {
-                let element = self.element as! UIView
-                try element.disableTheme(profile: profile as! UIThemeProfile.view, animated: animated)
-            }
         case is UILabel:
             if profile.elementType != .label {
                 throw UIThemeError.wrongProfileType
@@ -356,7 +351,7 @@ public class UIThemeElement: NSObject {
                 throw UIThemeError.wrongProfileType
             } else {
                 let element = self.element as! UIDatePicker
-                try? element.disableTheme(profile: profile as! UIThemeProfile.datepicker, animated: animated)
+                try element.disableTheme(profile: profile as! UIThemeProfile.datepicker, animated: animated)
             }
         case is UIPickerView:
             if profile.elementType != .pickerview {
@@ -377,21 +372,21 @@ public class UIThemeElement: NSObject {
                 throw UIThemeError.wrongProfileType
             } else {
                 let element = self.element as! UIToolbar
-                try? element.disableTheme(profile: profile as! UIThemeProfile.toolbar, animated: animated)
+                try element.disableTheme(profile: profile as! UIThemeProfile.toolbar, animated: animated)
             }
         case is UITabBar:
             if profile.elementType != .tabbar {
                 throw UIThemeError.wrongProfileType
             } else {
                 let element = self.element as! UITabBar
-                try? element.disableTheme(profile: profile as! UIThemeProfile.tabbar, animated: animated)
+                try element.disableTheme(profile: profile as! UIThemeProfile.tabbar, animated: animated)
             }
         case is UIBarButtonItem:
             if profile.elementType != .barbuttonitem {
                 throw UIThemeError.wrongProfileType
             } else {
                 let element = self.element as! UIBarButtonItem
-                try? element.disableTheme(profile: profile as! UIThemeProfile.barbuttonitem, animated: animated)
+                try element.disableTheme(profile: profile as! UIThemeProfile.barbuttonitem, animated: animated)
             }
         case is UITabBarItem:
             if profile.elementType != .tabbaritem {
@@ -406,6 +401,177 @@ public class UIThemeElement: NSObject {
             } else {
                 let element = self.element as! UISearchBar
                 try element.disableTheme(profile: profile as! UIThemeProfile.searchbar, animated: animated)
+            }
+        case is UIView:
+            if profile.elementType != .view {
+                throw UIThemeError.wrongProfileType
+            } else {
+                let element = self.element as! UIView
+                try element.disableTheme(profile: profile as! UIThemeProfile.view, animated: animated)
+            }
+        default:
+            throw UIThemeError.unsupportedType
+        }
+    }
+    
+    /// Validate that the elment can change
+    public func validate() throws {
+        switch element.self {
+        case is UILabel:
+            if profile.elementType != .label {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIButton:
+            if profile.elementType != .button {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UITextField:
+            if profile.elementType != .textfield {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UISlider:
+            if profile.elementType != .slider {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UISwitch:
+            if profile.elementType != .switch {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIActivityIndicatorView:
+            if profile.elementType != .activityindicator {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIProgressView:
+            if profile.elementType != .progressbar {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIPageControl:
+            if profile.elementType != .pagecontrol {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIStepper:
+            if profile.elementType != .stepper {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UISegmentedControl:
+            if profile.elementType != .segmentedcontroller {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UITableView:
+            if profile.elementType != .tableview {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UITableViewCell:
+            if profile.elementType != .tableviewcell {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIImageView:
+            if profile.elementType != .imageview {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UICollectionView:
+            if profile.elementType != .collectionview {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UICollectionViewCell:
+            if profile.elementType != .collectionviewcell {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UITextView:
+            if profile.elementType != .textview {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIScrollView:
+            if profile.elementType != .scrollview {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIDatePicker:
+            if profile.elementType != .datepicker {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIPickerView:
+            if profile.elementType != .pickerview {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UINavigationBar:
+            if profile.elementType != .navigationbar {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIToolbar:
+            if profile.elementType != .toolbar {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UITabBar:
+            if profile.elementType != .tabbar {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIBarButtonItem:
+            if profile.elementType != .barbuttonitem {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UITabBarItem:
+            if profile.elementType != .tabbaritem {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UISearchBar:
+            if profile.elementType != .searchbar {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
+            }
+        case is UIView:
+            if profile.elementType != .view {
+                throw UIThemeError.wrongProfileType
+            } else {
+                return
             }
         default:
             throw UIThemeError.unsupportedType

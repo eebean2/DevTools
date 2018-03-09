@@ -39,6 +39,12 @@ public class UITheme {
     public private(set) var isThemeOn = false
     /// Time at which everything animates
     public var animationTime: TimeInterval = 0.5
+    /// Force theme change on failure
+    ///
+    /// - note: If false, the theme will automaticly revert back.
+    public var forceFailedChange = true
+    /// Animate force change on failure
+    public var animateForceChange = false
     
     //MARK: -Methods
     
@@ -71,22 +77,43 @@ public class UITheme {
         elementPool.removeAll()
     }
     
+    /// Check if all the elements in the object pool will change without error
+    ///
+    /// - note: IF this throws, you have AT LEAST one object that will not work. This means you may or may not have more. You may force it to still enable or disable the theme.
+    func validatePool() -> (element: UIThemeElement?, error: Error?) {
+        for element in elementPool {
+            do {
+                try element.validate()
+            } catch let error {
+                return (element, error)
+            }
+        }
+        return (nil, nil)
+    }
+    
     /// Enable the theme for all objects in the element pool
     ///
-    /// - note: This is automaticly animated. The object pool is animated as one instance, and not individualy.
-    public func enableTheme(animated: Bool = true) throws {
+    /// - note: This is automaticly animated. The pool is animated as one instance, and not individualy.
+    public func enableTheme(animated: Bool = true) {
         self.delegate?.themeWillChange!()
         var t: TimeInterval = 0
         if animated {
             t = animationTime
         }
-        UIView.animate(withDuration: t, animations: {
-            UIView.animate(withDuration: t) {
-                for element in self.elementPool {
-                    try? element.enableTheme(animated: false)
+        UIView.animate(withDuration: t) {
+            for element in self.elementPool {
+                do {
+                    try element.enableTheme(animated: animated)
+                } catch let error {
+                    self.delegate?.themeDidNotChange(onElement: element, error: error)
+                    if self.forceFailedChange {
+                        self.forceEnableTheme()
+                    } else {
+                        self.forceDisableTheme()
+                    }
+                    return
                 }
             }
-        }) { (_) in
             self.isThemeOn = true
             self.delegate?.themeDidChange!()
         }
@@ -95,31 +122,65 @@ public class UITheme {
     /// Disable the theme for all objects in the element pool
     ///
     /// - note: This is automaticly animated. The object pool is animated as one instance, and not individualy.
-    public func disableTheme(animated: Bool = true) throws {
+    public func disableTheme(animated: Bool = true) {
         self.delegate?.themeWillChange!()
         var t: TimeInterval = 0
         if animated {
             t = animationTime
         }
-        UIView.animate(withDuration: t, animations: {
+        UIView.animate(withDuration: t) {
             for element in self.elementPool {
-                try? element.disableTheme(animated: false)
+                do {
+                    try element.disableTheme(animated: animated)
+                } catch let error {
+                    self.delegate?.themeDidNotChange(onElement: element, error: error)
+                    if self.forceFailedChange {
+                        self.forceDisableTheme()
+                    } else {
+                        self.forceDisableTheme()
+                    }
+                    return
+                }
             }
-        }) { (_) in
             self.isThemeOn = false
             self.delegate?.themeDidChange!()
         }
+    }
+    
+    private func forceEnableTheme() {
+        self.delegate?.themeWillChange!()
+        var t: TimeInterval = 0
+        if animateForceChange {
+            t = animationTime
+        }
+        UIView.animate(withDuration: t) {
+            for element in self.elementPool {
+                try? element.enableTheme(animated: false)
+            }
+        }
+        self.isThemeOn = true
+        self.delegate?.themeDidChange!()
+    }
+    
+    private func forceDisableTheme() {
+        self.delegate?.themeWillChange!()
+        var t: TimeInterval = 0
+        if animateForceChange {
+            t = animationTime
+        }
+        UIView.animate(withDuration: t) {
+            for element in self.elementPool {
+                try? element.disableTheme(animated: false)
+            }
+        }
+        self.isThemeOn = false
+        self.delegate?.themeDidChange!()
     }
 }
 
 @objc public protocol UIThemeDelegate: class {
     @objc optional func themeWillChange()
-    
-    // TODO: Subsitute above throws for didNotChange.
-    //       Must include a backup call to disable/
-    //       enable theme to revert changes.
-    
-    //    @objc optional func themeDidNotChange(error: Error)
+    func themeDidNotChange(onElement: UIThemeElement?, error: Error)
     @objc optional func themeDidChange()
 }
 

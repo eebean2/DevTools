@@ -11,14 +11,14 @@ import GLKit
 import SpriteKit
 import SceneKit
 
-public enum PrintMethod {
+internal enum PrintMethod {
     case devOnly, xcodeOnly, both
 }
 
-public typealias ConsoleCompletion = (DevConsole) -> Void // Public in future versions
+internal typealias ConsoleCompletion = (DevConsole) -> Void // Public in future versions
 private typealias BasicCompletion = () -> Void
 
-public class DevConsole {
+internal class DevConsole {
 
     //MARK:- Basic Variables
 
